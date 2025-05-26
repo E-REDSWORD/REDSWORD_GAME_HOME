@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ألعاب RedSword</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #f0db4f;
+      margin-bottom: 20px;
+    }
+    #searchBox {
+      margin: 0 auto 30px;
+      max-width: 400px;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .game-card {
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .game-card:hover {
+      background: #3a3a3a;
+    }
+    .game-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .game-card h2 {
+      color: #61dafb;
+    }
+    .game-card p {
+      color: #ccc;
+    }
+    .game-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #f0db4f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .game-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>مجموعة ألعاب 𖤍 | 𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </h1>
+  <div id="searchBox">
+    <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+  </div>
+  <div class="game-grid" id="gameGrid">
+    <div class="game-card">
+      <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
+      <h2>لعبة الرمز السري</h2>
+      <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
+      <a href="https://e-redsword.github.io/Password_game/" target="_blank">تشغيل اللعبة</a>
+    </div><div class="game-card">
+  <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
+  <h2>لعبة طبول الحرب</h2>
+  <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
+  <a href="https://e-redsword.github.io/Red/" target="_blank">تشغيل اللعبة</a>
+</div>
+
+<div class="game-card">
+  <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
+  <h2>لعبة الرموز المشوشة</h2>
+  <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
+  <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">تشغيل اللعبة</a>
+</div>
+
+  </div>  <script>
+    function filterGames() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".game-card");
+      cards.forEach(card => {
+        const title = card.querySelector("h2").textContent.toLowerCase();
+        card.style.display = title.includes(query) ? "block" : "none";
+      });
+    }
+  </script></body>
+</html>
