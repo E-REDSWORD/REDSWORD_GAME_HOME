@@ -1,106 +1,542 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ألعاب RedSword</title>
+  <title>ألعاب RedSword | 𖤍</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #1e1e1e;
-      color: #fff;
+    :root {
+      --primary: #f0db4f;
+      --secondary: #61dafb;
+      --dark: #1e1e1e;
+      --darker: #141414;
+      --gray: #2c2c2c;
+      --light-gray: #3a3a3a;
+      --text: #fff;
+      --text-secondary: #ccc;
+      --success: #4CAF50;
+      --warning: #FFC107;
+      --danger: #F44336;
+    }
+    
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      color: var(--text);
+      min-height: 100vh;
       padding: 20px;
       text-align: center;
     }
-    h1 {
-      color: #f0db4f;
-      margin-bottom: 20px;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    #searchBox {
-      margin: 0 auto 30px;
-      max-width: 400px;
-    }
-    #searchInput {
-      width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      border: none;
-    }
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .game-card {
-      background: #2c2c2c;
+    
+    /* Header Styles */
+    header {
+      margin-bottom: 30px;
       padding: 20px;
-      border-radius: 10px;
-      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .game-card:hover {
-      background: #3a3a3a;
-    }
-    .game-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
       margin-bottom: 15px;
     }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      text-shadow: 0 0 15px rgba(240, 219, 79, 0.5);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+    
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 25px;
+      line-height: 1.6;
+    }
+    
+    /* Search and Filter Styles */
+    .search-section {
+      background: rgba(44, 44, 44, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 0 auto 40px;
+      max-width: 800px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #searchBox {
+      position: relative;
+      margin-bottom: 25px;
+    }
+    
+    #searchInput {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: 2px solid transparent;
+      background: rgba(30, 30, 30, 0.8);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+    
+    #searchInput:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 15px rgba(240, 219, 79, 0.3);
+    }
+    
+    #searchBox i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+    
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .filter-btn {
+      background: var(--gray);
+      color: var(--text);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: var(--dark);
+    }
+    
+    /* Game Grid */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 0 auto;
+    }
+    
+    .game-card {
+      background: var(--gray);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--primary);
+    }
+    
+    .game-image {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .game-card:hover .game-image img {
+      transform: scale(1.05);
+    }
+    
+    .game-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: var(--dark);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+    
+    .game-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
     .game-card h2 {
-      color: #61dafb;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      font-size: 1.5rem;
     }
+    
     .game-card p {
-      color: #ccc;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
     }
+    
     .game-card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #f0db4f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, var(--primary), #e6c926);
+      color: var(--dark);
+      padding: 12px 25px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      transition: all 0.3s ease;
+      gap: 8px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
     }
+    
     .game-card a:hover {
-      text-decoration: underline;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(240, 219, 79, 0.4);
+    }
+    
+    /* Stats and Info */
+    .game-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .game-card {
+      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    
+    .game-card:nth-child(2) { animation-delay: 0.1s; }
+    .game-card:nth-child(3) { animation-delay: 0.2s; }
+    .game-card:nth-child(4) { animation-delay: 0.3s; }
+    .game-card:nth-child(5) { animation-delay: 0.4s; }
+    
+    /* No Results */
+    .no-results {
+      grid-column: 1 / -1;
+      padding: 50px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .search-section {
+        padding: 20px 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .filters {
+        gap: 8px;
+      }
+      
+      .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>مجموعة ألعاب 𖤍 | 𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </h1>
-  <div id="searchBox">
-    <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">𖤍</div>
+        <h1>ألعاب RedSword</h1>
+      </div>
+      <p class="subtitle">استكشف مجموعة ألعابنا المثيرة والممتعة التي تقدم تجارب فريدة وتحديات ممتعة للاعبين</p>
+    </header>
+    
+    <section class="search-section">
+      <div id="searchBox">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+      </div>
+      
+      <div class="filters">
+        <button class="filter-btn active" data-category="all">
+          <i class="fas fa-gamepad"></i> الكل
+        </button>
+        <button class="filter-btn" data-category="strategy">
+          <i class="fas fa-chess"></i> استراتيجية
+        </button>
+        <button class="filter-btn" data-category="puzzle">
+          <i class="fas fa-puzzle-piece"></i> ألغاز
+        </button>
+        <button class="filter-btn" data-category="adventure">
+          <i class="fas fa-map"></i> مغامرة
+        </button>
+      </div>
+    </section>
+    
+    <div class="game-grid" id="gameGrid">
+      <!-- لعبة الرمز السري -->
+      <div class="game-card" data-category="puzzle">
+        <div class="game-image">
+          <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
+          <span class="game-badge">جديد</span>
+        </div>
+        <div class="game-content">
+          <h2>لعبة الرمز السري</h2>
+          <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
+          <a href="https://e-redsword.github.io/Password_game/" target="_blank">
+            <i class="fas fa-play"></i> تشغيل اللعبة
+          </a>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+            <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
+            <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- لعبة طبول الحرب -->
+      <div class="game-card" data-category="strategy">
+        <div class="game-image">
+          <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
+        </div>
+        <div class="game-content">
+          <h2>لعبة طبول الحرب</h2>
+          <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
+          <a href="https://e-redsword.github.io/Red/" target="_blank">
+            <i class="fas fa-play"></i> تشغيل اللعبة
+          </a>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> 4.5</div>
+            <div class="stat"><i class="fas fa-user-friends"></i> 2-4 لاعبين</div>
+            <div class="stat"><i class="fas fa-clock"></i> 30 دقيقة</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- لعبة الرموز المشوشة -->
+      <div class="game-card" data-category="puzzle">
+        <div class="game-image">
+          <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
+        </div>
+        <div class="game-content">
+          <h2>لعبة الرموز المشوشة</h2>
+          <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
+          <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">
+            <i class="fas fa-play"></i> تشغيل اللعبة
+          </a>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> 4.3</div>
+            <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
+            <div class="stat"><i class="fas fa-clock"></i> 15 دقيقة</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- لعبة صراع النقابات -->
+      <div class="game-card" data-category="strategy">
+        <div class="game-image">
+          <img src="https://e-redsword.github.io/Union_conflict/cover.jpg" alt="لعبة صراع النقابات">
+          <span class="game-badge">شائع</span>
+        </div>
+        <div class="game-content">
+          <h2>لعبة صراع النقابات</h2>
+          <p>لعبة استراتيجية تنافسية تضعك في صراع بين النقابات، حيث تخطط وتتحالف لتحقيق الهيمنة.</p>
+          <a href="https://e-redsword.github.io/Union_conflict/" target="_blank">
+            <i class="fas fa-play"></i> تشغيل اللعبة
+          </a>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> 4.8</div>
+            <div class="stat"><i class="fas fa-user-friends"></i> 3-5 لاعبين</div>
+            <div class="stat"><i class="fas fa-clock"></i> 45 دقيقة</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- لعبة الشخصية السرية -->
+      <div class="game-card" data-category="adventure">
+        <div class="game-image">
+          <img src="https://e-redsword.github.io/secret-character/cover.jpg" alt="لعبة الشخصية السرية">
+          <span class="game-badge">جديد</span>
+        </div>
+        <div class="game-content">
+          <h2>لعبة الشخصية السرية</h2>
+          <p>لعبة مغامرة غامضة حيث تحاول اكتشاف هوية الشخصية السرية من خلال حل الألغاز والقرائن.</p>
+          <a href="https://e-redsword.github.io/secret-character/" target="_blank">
+            <i class="fas fa-play"></i> تشغيل اللعبة
+          </a>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> 4.6</div>
+            <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
+            <div class="stat"><i class="fas fa-clock"></i> 60 دقيقة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2023 جميع الحقوق محفوظة | ألعاب RedSword 𖤍</p>
+      <p>صمم بحب لجميع محبي الألعاب التفاعلية والاستراتيجية</p>
+    </footer>
   </div>
-  <div class="game-grid" id="gameGrid">
-    <div class="game-card">
-      <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
-      <h2>لعبة الرمز السري</h2>
-      <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
-      <a href="https://e-redsword.github.io/Password_game/" target="_blank">تشغيل اللعبة</a>
-    </div><div class="game-card">
-  <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
-  <h2>لعبة طبول الحرب</h2>
-  <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
-  <a href="https://e-redsword.github.io/Red/" target="_blank">تشغيل اللعبة</a>
-</div>
-
-<div class="game-card">
-  <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
-  <h2>لعبة الرموز المشوشة</h2>
-  <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
-  <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">تشغيل اللعبة</a>
-</div>
-
-  </div>  <script>
+  
+  <script>
     function filterGames() {
       const query = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.querySelectorAll(".game-card");
+      let visibleCount = 0;
+      
       cards.forEach(card => {
         const title = card.querySelector("h2").textContent.toLowerCase();
-        card.style.display = title.includes(query) ? "block" : "none";
+        const description = card.querySelector("p").textContent.toLowerCase();
+        const category = card.getAttribute("data-category");
+        
+        if (title.includes(query) || description.includes(query)) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
       });
+      
+      // Show no results message if needed
+      const noResults = document.getElementById("noResults");
+      if (noResults) noResults.remove();
+      
+      if (visibleCount === 0) {
+        const gameGrid = document.getElementById("gameGrid");
+        const noResults = document.createElement("div");
+        noResults.className = "no-results";
+        noResults.id = "noResults";
+        noResults.innerHTML = `
+          <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
+          <h3>لا توجد نتائج</h3>
+          <p>لم نعثر على ألعاب تطابق بحثك. حاول استخدام كلمات أخرى.</p>
+        `;
+        gameGrid.appendChild(noResults);
+      }
     }
-  </script></body>
+    
+    // Filter by category
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const category = this.getAttribute('data-category');
+        const cards = document.querySelectorAll(".game-card");
+        
+        cards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        document.querySelectorAll('.game-card').forEach(card => {
+          card.style.opacity = '1';
+        });
+      }, 300);
+    });
+  </script>
+</body>
 </html>
