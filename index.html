@@ -545,6 +545,187 @@
   </style>
 </head>
 <body>
+
+	<!-- ابدأ بلصق هذا داخل وسم <body> -->
+
+<style>
+  /* استيراد خطوط أيقونات Font Awesome */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", "Tajawal", sans-serif;
+    direction: rtl;
+    background: #000;
+  }
+
+  #loginPage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      to bottom right,
+      #2c0268,
+      #5a0080,
+      #d60200
+    );
+  }
+
+  .card {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+
+  .card h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+
+  .card p.intro {
+    color: #ccc;
+    margin-bottom: 24px;
+  }
+
+  #loginForm {
+    position: relative;
+  }
+
+  #loginForm .input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  #loginForm input[type="password"] {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.1rem;
+    transition: border-color 0.2s ease;
+  }
+
+  #loginForm input[type="password"]:focus {
+    outline: none;
+    border-color: #d60200;
+  }
+
+  #loginForm .input-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #d60200;
+    font-size: 1.2rem;
+  }
+
+  #loginForm button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(
+      to right,
+      #d60200,
+      #ff4e00
+    );
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  #loginForm button:hover {
+    background: linear-gradient(
+      to right,
+      #c20000,
+      #ff6000
+    );
+  }
+
+  #loginForm button:active {
+    transform: scale(0.96);
+  }
+
+  #loginError {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    height: 18px;
+    visibility: hidden;
+  }
+
+  #loginError.visible {
+    visibility: visible;
+  }
+
+  .footer-note {
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 30px;
+  }
+</style>
+
+<div id="loginPage">
+  <div class="card">
+    <h1>𖤍 | REDSWORD</h1>
+    <p class="intro">موقع REDSWORD للألعاب</p>
+
+    <form id="loginForm" onsubmit="checkPassword(event)">
+      <div class="input-wrapper">
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="كلمة المرور"
+          required
+        />
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <button type="submit">الدخول إلى الموقع</button>
+      <div id="loginError">كلمة المرور غير صحيحة!</div>
+    </form>
+
+    <p class="footer-note">مقفلة للحفاظ على سرية الاجابات</p>
+  </div>
+</div>
+
+<script>
+  function checkPassword(e) {
+    e.preventDefault();
+    const input = document.getElementById("loginPassword");
+    const error = document.getElementById("loginError");
+    const correct = "998877";
+
+    if (input.value === correct) {
+      document.getElementById("loginPage").style.display = "none";
+      // هنا يمكنك إظهار القسم التالي (مثلاً #registration)
+      // document.getElementById("registration").style.display = "block";
+    } else {
+      error.classList.add("visible");
+      input.style.borderColor = "#ff6b6b";
+      setTimeout(() => {
+        error.classList.remove("visible");
+        input.style.borderColor = "transparent";
+      }, 3000);
+    }
+  }
+</script>
+
+<!-- انتهى الكود المخصص للـ <body> -->
+	
 <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="صورة رأس الموقع" class="banner2-img">
 	
 	<img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="صورة رأس الموقع" class="banner-img">
