@@ -542,415 +542,594 @@
         font-size: 1rem;
       }
     }
+    
+    /* صفحة كلمة المرور */
+    .password-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .password-logo {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(240, 219, 79, 0.7);
+    }
+    
+    .password-title {
+      font-size: 2.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    
+    .password-form {
+      background: rgba(44, 44, 44, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .password-form h2 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+    
+    .password-input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+    
+    .password-input-group input {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: 2px solid transparent;
+      background: rgba(30, 30, 30, 0.8);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+    
+    .password-input-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 15px rgba(240, 219, 79, 0.3);
+    }
+    
+    .password-input-group i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+    
+    .password-submit {
+      background: linear-gradient(to right, var(--primary), #e6c926);
+      color: var(--dark);
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .password-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(240, 219, 79, 0.4);
+    }
+    
+    .password-error {
+      color: var(--danger);
+      margin-top: 15px;
+      display: none;
+    }
+    
+    .site-content {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-
-<!-- انتهى الكود المخصص للـ <body> -->
-	
-<img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="صورة رأس الموقع" class="banner2-img">
-	
-	<img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="صورة رأس الموقع" class="banner-img">
-  
-  <div class="container">
-    <header>
-      <div class="logo">
-        <div class="logo-icon">𖤍</div>
-        <h1>موقع ألعاب 𖤍RedSword</h1>
-      </div>
-      <div class="logo-icon">𖤍</div>
-        <h1>تصميم وتطوير  𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃🇦🇷</h1>
-  </div>
-      <p class="subtitle">استكشف مجموعة ألعابنا المثيرة والممتعة التي تقدم تجارب فريدة وتحديات ممتعة للاعبين</p>
-    </header>
+  <!-- صفحة كلمة المرور -->
+  <div id="passwordPage" class="password-page">
+    <div class="password-logo">𖤍</div>
+    <h1 class="password-title">موقع ألعاب 𖤍RedSword</h1>
     
-    <section class="search-section">
-      <div id="searchBox">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+    <div class="password-form">
+      <h2><i class="fas fa-lock"></i> الدخول إلى الموقع</h2>
+      <p>الرجاء إدخال كلمة المرور للوصول إلى موقع الألعاب</p>
+      
+      <div class="password-input-group">
+        <i class="fas fa-key"></i>
+        <input type="password" id="sitePassword" placeholder="أدخل كلمة المرور">
       </div>
       
-      <div class="filters">
-        <button class="filter-btn active" data-category="all">
-          <i class="fas fa-gamepad"></i> الكل
-        </button>
-        <button class="filter-btn" data-category="strategy">
-          <i class="fas fa-chess"></i> استراتيجية
-        </button>
-        <button class="filter-btn" data-category="puzzle">
-          <i class="fas fa-puzzle-piece"></i> ألغاز
-        </button>
-        <button class="filter-btn" data-category="adventure">
-          <i class="fas fa-map"></i> مغامرة
-        </button>
-      </div>
-    </section>
-    
-    <div class="game-grid" id="gameGrid">
-
-
-	    <!--لعبة الحروف المبعثرة-->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/scattered-words/cover.png" alt="لعبة الحروف المبعثرة ">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-          <a href="https://e-redsword.github.io/scattered-words/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-	    
-	    <!--لعبة الهروب من التابوت-->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Escape-from-the-Coffin/cover.png" alt="لعبة الهروب من التابوت">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-          <a href="https://e-redsword.github.io/Escape-from-the-Coffin/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-
-
-	    <!--لعبة الاختلافات النصية -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Textual-differences/cover.png" alt="لعبة الاختلافات النصية">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-          <a href="https://e-redsword.github.io/Textual-differences/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-
-
-<!--لعبة أرقام و فواكه مشفرة -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Coded-numbers-and-fruits/cover.png" alt="لعبة فواكه وأرقام مشفرة">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة ارقام وفواكه مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة فواكه وأرقام مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-          <a href="https://e-redsword.github.io/Coded-numbers-and-fruits/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-
-
-	    
-	    <!--لعبة تسلسل المنطق -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Logic-sequence/cover.png" alt="لعبة تسلسل المنطق">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-          <a href="https://e-redsword.github.io/Logic-sequence/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-
-	    <!--ظل المعنى -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Shadow-of-meaning/cover.png" alt="لعبة ظل المعنى (التخمين)">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة ظل المعنى𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة ظل المعنى 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-          <a href="https://e-redsword.github.io/Shadow-of-meaning/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-	    <!--لعبة تخمين الشخصية التحدي -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Guess-the-Character-Challenge/cover.png" alt="لعبة تخمين الشخصية (التحدي)">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-          <a href="https://e-redsword.github.io/Guess-the-Character-Challenge/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-	
-	    <!-- لعبة الرمز السري -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/escape-convoy/cover.png" alt="لعبة قافلة الهروب">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة قافلة الهروب</h2>
-          <p>لعبة قافلة الهروب- الاختيارات المشؤومة اختر الطريق الصحيح للوصول للخلاص لعبة مصمملة للعب بالرومات.</p>
-          <a href="https://e-redsword.github.io/escape-convoy/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      <!--لعبة حرب الفواكه -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Redsword_Fruits/cover.jpg" alt="لعبة الرمز السري">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة حرب الفواكه نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة حرب الفواكه نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-          <a href="https://e-redsword.github.io/Redsword_Fruits/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-	    <!--لعبة حرب الدول -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/War-of-nations/cover.png" alt="لعبة حرب الدول">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة حرب الدول نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-          <p>لعبة حرب الدول نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-          <a href="https://e-redsword.github.io/War-of-nations/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      <!-- لعبة الرمز السري -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة الرمز السري</h2>
-          <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
-          <a href="https://e-redsword.github.io/Password_game/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- لعبة طبول الحرب -->
-      <div class="game-card" data-category="strategy">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
-        </div>
-        <div class="game-content">
-          <h2>لعبة طبول الحرب</h2>
-          <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
-          <a href="https://e-redsword.github.io/Red/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.5</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 2-4 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 30 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- لعبة الرموز المشوشة -->
-      <div class="game-card" data-category="puzzle">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
-        </div>
-        <div class="game-content">
-          <h2>لعبة الرموز المشوشة</h2>
-          <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
-          <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.3</div>
-            <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
-            <div class="stat"><i class="fas fa-clock"></i> 15 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- لعبة صراع النقابات -->
-      <div class="game-card" data-category="strategy">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/Union_conflict/cover.jpg" alt="لعبة صراع النقابات">
-          <span class="game-badge">شائع</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة صراع النقابات</h2>
-          <p>لعبة استراتيجية تنافسية تضعك في صراع بين النقابات، حيث تخطط وتتحالف لتحقيق الهيمنة.</p>
-          <a href="https://e-redsword.github.io/Union_conflict/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.8</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> 3-5 لاعبين</div>
-            <div class="stat"><i class="fas fa-clock"></i> 45 دقيقة</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- لعبة الشخصية السرية -->
-      <div class="game-card" data-category="adventure">
-        <div class="game-image">
-          <img src="https://e-redsword.github.io/secret-character/cover.jpg" alt="لعبة الشخصية السرية">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>لعبة الشخصية السرية</h2>
-          <p>لعبة مغامرة غامضة حيث تحاول اكتشاف هوية الشخصية السرية من خلال حل الألغاز والقرائن.</p>
-          <a href="https://e-redsword.github.io/secret-character/" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> 4.6</div>
-            <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
-            <div class="stat"><i class="fas fa-clock"></i> 60 دقيقة</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- قسم إضافة لعبة جديدة (مخفي افتراضيًا) -->
-    <section class="add-game-section" id="addGameSection">
-      <h2><i class="fas fa-plus-circle"></i> إضافة لعبة جديدة</h2>
-      <div class="form-group">
-        <label for="gameName">اسم اللعبة:</label>
-        <input type="text" id="gameName" placeholder="أدخل اسم اللعبة">
-      </div>
-      
-      <div class="form-group">
-        <label for="gameDescription">وصف اللعبة:</label>
-        <textarea id="gameDescription" placeholder="أدخل وصفًا مختصرًا للعبة"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label for="gameCategory">تصنيف اللعبة:</label>
-        <select id="gameCategory">
-          <option value="strategy">استراتيجية</option>
-          <option value="puzzle">ألغاز</option>
-          <option value="adventure">مغامرة</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="gameImage">رابط صورة الغلاف:</label>
-        <input type="text" id="gameImage" placeholder="أدخل رابط صورة الغلاف">
-      </div>
-      
-      <div class="form-group">
-        <label for="gameLink">رابط اللعبة:</label>
-        <input type="text" id="gameLink" placeholder="أدخل رابط اللعبة">
-      </div>
-      
-      <button class="add-btn" onclick="addNewGame()">
-        <i class="fas fa-plus"></i> إضافة اللعبة
+      <button class="password-submit" onclick="checkSitePassword()">
+        <i class="fas fa-unlock"></i> دخول
       </button>
-    </section>
-    
-    <footer>
-      <p>© 2025 جميع الحقوق محفوظة | ألعاب تصميم وتطوير وبرمجة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃🇦🇷</p>
-      <p>صمم بحب لجميع محبي الألعاب التفاعلية والاستراتيجية على رومات ستار ميكر و توب توب</p>
-    </footer>
-  </div>
-  
-  <!-- زر سري لإظهار نافذة كلمة السر -->
-  <button id="secretBtn" class="secret-btn">
-    <i class="fas fa-lock"></i>
-  </button>
-  
-  <!-- نافذة إدخال كلمة السر -->
-  <div class="password-modal" id="passwordModal">
-    <div class="password-box">
-      <h2><i class="fas fa-key"></i> الرمز السري</h2>
-      <p>أدخل الرمز السري للوصول إلى أدوات الإدارة</p>
-      <input type="password" id="passwordInput" class="password-input" placeholder="أدخل الرمز السري">
-      <div>
-        <button class="modal-btn submit-btn" onclick="checkPassword()">دخول</button>
-        <button class="modal-btn cancel-btn" onclick="closePasswordModal()">إلغاء</button>
-      </div>
+      
+      <p class="password-error" id="passwordError">
+        <i class="fas fa-exclamation-circle"></i> كلمة المرور غير صحيحة، حاول مرة أخرى
+      </p>
     </div>
   </div>
+  
+  <!-- محتوى الموقع (سيظهر فقط بعد إدخال كلمة المرور الصحيحة) -->
+  <div id="siteContent" class="site-content">
+    
+    <!-- انتهى الكود المخصص للـ <body> -->
+  	
+    <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="صورة رأس الموقع" class="banner2-img">
+  	
+  	<img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="صورة رأس الموقع" class="banner-img">
+    
+    <div class="container">
+      <header>
+        <div class="logo">
+          <div class="logo-icon">𖤍</div>
+          <h1>موقع ألعاب 𖤍RedSword</h1>
+        </div>
+        <div class="logo-icon">𖤍</div>
+          <h1>تصميم وتطوير  𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃🇦🇷</h1>
+      </div>
+        <p class="subtitle">استكشف مجموعة ألعابنا المثيرة والممتعة التي تقدم تجارب فريدة وتحديات ممتعة للاعبين</p>
+      </header>
+      
+      <section class="search-section">
+        <div id="searchBox">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+        </div>
+        
+        <div class="filters">
+          <button class="filter-btn active" data-category="all">
+            <i class="fas fa-gamepad"></i> الكل
+          </button>
+          <button class="filter-btn" data-category="strategy">
+            <i class="fas fa-chess"></i> استراتيجية
+          </button>
+          <button class="filter-btn" data-category="puzzle">
+            <i class="fas fa-puzzle-piece"></i> ألغاز
+          </button>
+          <button class="filter-btn" data-category="adventure">
+            <i class="fas fa-map"></i> مغامرة
+          </button>
+        </div>
+      </section>
+      
+      <div class="game-grid" id="gameGrid">
+
+
+  	    <!--لعبة الحروف المبعثرة-->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/scattered-words/cover.png" alt="لعبة الحروف المبعثرة ">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
+            <a href="https://e-redsword.github.io/scattered-words/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+  	    
+  	    <!--لعبة الهروب من التابوت-->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Escape-from-the-Coffin/cover.png" alt="لعبة الهروب من التابوت">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
+            <a href="https://e-redsword.github.io/Escape-from-the-Coffin/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+
+
+  	    <!--لعبة الاختلافات النصية -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Textual-differences/cover.png" alt="لعبة الاختلافات النصية">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
+            <a href="https://e-redsword.github.io/Textual-differences/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+
+
+  <!--لعبة أرقام و فواكه مشفرة -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Coded-numbers-and-fruits/cover.png" alt="لعبة فواكه وأرقام مشفرة">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة ارقام وفواكه مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة فواكه وأرقام مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
+            <a href="https://e-redsword.github.io/Coded-numbers-and-fruits/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+
+
+  	    
+  	    <!--لعبة تسلسل المنطق -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Logic-sequence/cover.png" alt="لعبة تسلسل المنطق">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
+            <a href="https://e-redsword.github.io/Logic-sequence/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+
+  	    <!--ظل المعنى -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Shadow-of-meaning/cover.png" alt="لعبة ظل المعنى (التخمين)">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة ظل المعنى𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة ظل المعنى 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
+            <a href="https://e-redsword.github.io/Shadow-of-meaning/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+  	    <!--لعبة تخمين الشخصية التحدي -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Guess-the-Character-Challenge/cover.png" alt="لعبة تخمين الشخصية (التحدي)">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
+            <a href="https://e-redsword.github.io/Guess-the-Character-Challenge/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+  	
+  	    <!-- لعبة الرمز السري -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/escape-convoy/cover.png" alt="لعبة قافلة الهروب">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة قافلة الهروب</h2>
+            <p>لعبة قافلة الهروب- الاختيارات المشؤومة اختر الطريق الصحيح للوصول للخلاص لعبة مصمملة للعب بالرومات.</p>
+            <a href="https://e-redsword.github.io/escape-convoy/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        <!--لعبة حرب الفواكه -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Redsword_Fruits/cover.jpg" alt="لعبة الرمز السري">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة حرب الفواكه نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة حرب الفواكه نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
+            <a href="https://e-redsword.github.io/Redsword_Fruits/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+  	    <!--لعبة حرب الدول -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/War-of-nations/cover.png" alt="لعبة حرب الدول">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة حرب الدول نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
+            <p>لعبة حرب الدول نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
+            <a href="https://e-redsword.github.io/War-of-nations/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        <!-- لعبة الرمز السري -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة الرمز السري</h2>
+            <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
+            <a href="https://e-redsword.github.io/Password_game/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- لعبة طبول الحرب -->
+        <div class="game-card" data-category="strategy">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
+          </div>
+          <div class="game-content">
+            <h2>لعبة طبول الحرب</h2>
+            <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
+            <a href="https://e-redsword.github.io/Red/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.5</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 2-4 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 30 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- لعبة الرموز المشوشة -->
+        <div class="game-card" data-category="puzzle">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
+          </div>
+          <div class="game-content">
+            <h2>لعبة الرموز المشوشة</h2>
+            <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
+            <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.3</div>
+              <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
+              <div class="stat"><i class="fas fa-clock"></i> 15 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- لعبة صراع النقابات -->
+        <div class="game-card" data-category="strategy">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/Union_conflict/cover.jpg" alt="لعبة صراع النقابات">
+            <span class="game-badge">شائع</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة صراع النقابات</h2>
+            <p>لعبة استراتيجية تنافسية تضعك في صراع بين النقابات، حيث تخطط وتتحالف لتحقيق الهيمنة.</p>
+            <a href="https://e-redsword.github.io/Union_conflict/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.8</div>
+              <div class="stat"><i class="fas fa-user-friends"></i> 3-5 لاعبين</div>
+              <div class="stat"><i class="fas fa-clock"></i> 45 دقيقة</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- لعبة الشخصية السرية -->
+        <div class="game-card" data-category="adventure">
+          <div class="game-image">
+            <img src="https://e-redsword.github.io/secret-character/cover.jpg" alt="لعبة الشخصية السرية">
+            <span class="game-badge">جديد</span>
+          </div>
+          <div class="game-content">
+            <h2>لعبة الشخصية السرية</h2>
+            <p>لعبة مغامرة غامضة حيث تحاول اكتشاف هوية الشخصية السرية من خلال حل الألغاز والقرائن.</p>
+            <a href="https://e-redsword.github.io/secret-character/" target="_blank">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+            <div class="game-stats">
+              <div class="stat"><i class="fas fa-star"></i> 4.6</div>
+              <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
+              <div class="stat"><i class="fas fa-clock"></i> 60 دقيقة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- قسم إضافة لعبة جديدة (مخفي افتراضيًا) -->
+      <section class="add-game-section" id="addGameSection">
+        <h2><i class="fas fa-plus-circle"></i> إضافة لعبة جديدة</h2>
+        <div class="form-group">
+          <label for="gameName">اسم اللعبة:</label>
+          <input type="text" id="gameName" placeholder="أدخل اسم اللعبة">
+        </div>
+        
+        <div class="form-group">
+          <label for="gameDescription">وصف اللعبة:</label>
+          <textarea id="gameDescription" placeholder="أدخل وصفًا مختصرًا للعبة"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="gameCategory">تصنيف اللعبة:</label>
+          <select id="gameCategory">
+            <option value="strategy">استراتيجية</option>
+            <option value="puzzle">ألغاز</option>
+            <option value="adventure">مغامرة</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="gameImage">رابط صورة الغلاف:</label>
+          <input type="text" id="gameImage" placeholder="أدخل رابط صورة الغلاف">
+        </div>
+        
+        <div class="form-group">
+          <label for="gameLink">رابط اللعبة:</label>
+          <input type="text" id="gameLink" placeholder="أدخل رابط اللعبة">
+        </div>
+        
+        <button class="add-btn" onclick="addNewGame()">
+          <i class="fas fa-plus"></i> إضافة اللعبة
+        </button>
+      </section>
+      
+      <footer>
+        <p>© 2025 جميع الحقوق محفوظة | ألعاب تصميم وتطوير وبرمجة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃🇦🇷</p>
+        <p>صمم بحب لجميع محبي الألعاب التفاعلية والاستراتيجية على رومات ستار ميكر و توب توب</p>
+      </footer>
+    </div>
+    
+    <!-- زر سري لإظهار نافذة كلمة السر -->
+    <button id="secretBtn" class="secret-btn">
+      <i class="fas fa-lock"></i>
+    </button>
+    
+    <!-- نافذة إدخال كلمة السر -->
+    <div class="password-modal" id="passwordModal">
+      <div class="password-box">
+        <h2><i class="fas fa-key"></i> الرمز السري</h2>
+        <p>أدخل الرمز السري للوصول إلى أدوات الإدارة</p>
+        <input type="password" id="passwordInput" class="password-input" placeholder="أدخل الرمز السري">
+        <div>
+          <button class="modal-btn submit-btn" onclick="checkPassword()">دخول</button>
+          <button class="modal-btn cancel-btn" onclick="closePasswordModal()">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- نهاية div.site-content -->
   
   <script>
+    // 1. كلمة المرور للوصول إلى الموقع (سهلة التعديل)
+    const SITE_PASSWORD = "998877";
+    
+    // 2. عناصر DOM لصفحة كلمة المرور
+    const passwordPage = document.getElementById('passwordPage');
+    const siteContent = document.getElementById('siteContent');
+    const sitePasswordInput = document.getElementById('sitePassword');
+    const passwordError = document.getElementById('passwordError');
+    
+    // 3. التحقق من كلمة مرور الموقع
+    function checkSitePassword() {
+      if (sitePasswordInput.value === SITE_PASSWORD) {
+        // كلمة المرور صحيحة، إظهار المحتوى وإخفاء صفحة كلمة المرور
+        siteContent.style.display = 'block';
+        passwordPage.style.display = 'none';
+      } else {
+        // كلمة المرور غير صحيحة، عرض رسالة الخطأ
+        passwordError.style.display = 'block';
+        sitePasswordInput.value = '';
+        sitePasswordInput.focus();
+        
+        // إضافة اهتزاز للإشارة إلى الخطأ
+        sitePasswordInput.classList.add('shake');
+        setTimeout(() => {
+          sitePasswordInput.classList.remove('shake');
+        }, 500);
+      }
+    }
+    
+    // 4. السماح بالدخول باستخدام زر Enter
+    sitePasswordInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        checkSitePassword();
+      }
+    });
+    
+    // 5. تهيئة الصفحة: إظهار صفحة كلمة المرور فقط عند التحميل
+    document.addEventListener('DOMContentLoaded', function() {
+      passwordPage.style.display = 'flex';
+      siteContent.style.display = 'none';
+      sitePasswordInput.focus();
+    });
+
+    // 6. باقي كود JavaScript الأصلي للموقع
     // كلمة السر للوصول إلى صفحة الإضافة
     const SECRET_PASSWORD = "redsword123";
     
