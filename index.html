@@ -6,24 +6,24 @@
   <title>ألعاب RedSword | 𖤍</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-
-.banner2-img {
-  width: 100%;
-  max-width: 1500px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-  
-  .banner-img {
-  width: 100%;
-  max-width: 1500px;
-  height: 80px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-}
-    
+    /* Your existing CSS (banner2-img to password-error) */
+    .banner2-img {
+      width: 100%;
+      max-width: 1500px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+      
+    .banner-img {
+      width: 100%;
+      max-width: 1500px;
+      height: 80px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+        
     :root {
       --primary: #f0db4f;
       --secondary: #61dafb;
@@ -37,13 +37,13 @@
       --warning: #FFC107;
       --danger: #F44336;
     }
-    
+        
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+        
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -52,12 +52,12 @@
       padding: 20px;
       text-align: center;
     }
-    
+        
     .container {
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+        
     /* Header Styles */
     header {
       margin-bottom: 30px;
@@ -65,7 +65,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+        
     .logo {
       display: flex;
       align-items: center;
@@ -73,13 +73,13 @@
       gap: 15px;
       margin-bottom: 15px;
     }
-    
+        
     .logo-icon {
       font-size: 2.5rem;
       color: var(--primary);
       text-shadow: 0 0 15px rgba(240, 219, 79, 0.5);
     }
-    
+        
     h1 {
       font-size: 2.8rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -88,7 +88,7 @@
       margin: 0;
       letter-spacing: -1px;
     }
-    
+        
     .subtitle {
       color: var(--text-secondary);
       font-size: 1.2rem;
@@ -96,7 +96,7 @@
       margin: 0 auto 25px;
       line-height: 1.6;
     }
-    
+        
     /* Search and Filter Styles */
     .search-section {
       background: rgba(44, 44, 44, 0.7);
@@ -108,12 +108,12 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+        
     #searchBox {
       position: relative;
       margin-bottom: 25px;
     }
-    
+        
     #searchInput {
       width: 100%;
       padding: 15px 20px 15px 50px;
@@ -124,13 +124,13 @@
       color: var(--text);
       transition: all 0.3s ease;
     }
-    
+        
     #searchInput:focus {
       border-color: var(--primary);
       outline: none;
       box-shadow: 0 0 15px rgba(240, 219, 79, 0.3);
     }
-    
+        
     #searchBox i {
       position: absolute;
       left: 20px;
@@ -139,7 +139,7 @@
       color: var(--text-secondary);
       font-size: 1.2rem;
     }
-    
+        
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -147,7 +147,7 @@
       gap: 12px;
       margin-top: 20px;
     }
-    
+        
     .filter-btn {
       background: var(--gray);
       color: var(--text);
@@ -161,12 +161,12 @@
       align-items: center;
       gap: 8px;
     }
-    
+        
     .filter-btn:hover, .filter-btn.active {
       background: var(--primary);
       color: var(--dark);
     }
-    
+        
     /* Game Grid */
     .game-grid {
       display: grid;
@@ -174,7 +174,7 @@
       gap: 30px;
       margin: 0 auto;
     }
-    
+        
     .game-card {
       background: var(--gray);
       border-radius: 15px;
@@ -186,30 +186,30 @@
       display: flex;
       flex-direction: column;
     }
-    
+        
     .game-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--primary);
     }
-    
+        
     .game-image {
       width: 100%;
       height: 260px;
       position: relative;
       overflow: hidden;
     }
-    
+        
     .game-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-    
+        
     .game-card:hover .game-image img {
       transform: scale(1.05);
     }
-    
+        
     .game-badge {
       position: absolute;
       top: 15px;
@@ -222,50 +222,81 @@
       font-weight: bold;
       z-index: 2;
     }
-    
+        
     .game-content {
       padding: 20px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
-    
+        
     .game-card h2 {
       color: var(--secondary);
       margin-bottom: 12px;
       font-size: 1.5rem;
     }
-    
+        
     .game-card p {
       color: var(--text-secondary);
       line-height: 1.6;
       margin-bottom: 20px;
       flex-grow: 1;
     }
-    
-    .game-card a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+        
+    .game-card .game-links { /* New style for action buttons */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto; /* Push to bottom */
+    }
+
+    .game-card .game-links a,
+    .game-card .game-links button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        gap: 8px;
+        font-size: 0.95rem; /* Slightly smaller for multiple buttons */
+        border: none;
+        cursor: pointer;
+        flex-grow: 1; /* Allow buttons to grow */
+        min-width: 100px; /* Minimum width for buttons */
+    }
+        
+    .game-card a.play-btn { /* Changed class for play button */
       background: linear-gradient(to right, var(--primary), #e6c926);
       color: var(--dark);
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      gap: 8px;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      margin-top: auto;
     }
-    
-    .game-card a:hover {
+        
+    .game-card a.play-btn:hover { /* Changed class for play button */
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(240, 219, 79, 0.4);
     }
-    
+
+    /* New styles for admin buttons */
+    .game-card button.edit-btn {
+        background: linear-gradient(to right, var(--secondary), #4da6ff); /* Blueish */
+        color: var(--dark);
+    }
+    .game-card button.edit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+    }
+
+    .game-card button.delete-btn {
+        background: linear-gradient(to right, var(--danger), #e04b4b); /* Reddish */
+        color: white;
+    }
+    .game-card button.delete-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+    }
+        
     /* Stats and Info */
     .game-stats {
       display: flex;
@@ -276,13 +307,13 @@
       font-size: 0.9rem;
       color: var(--text-secondary);
     }
-    
+        
     .stat {
       display: flex;
       align-items: center;
       gap: 5px;
     }
-    
+        
     /* Footer */
     footer {
       margin-top: 60px;
@@ -291,41 +322,78 @@
       font-size: 0.9rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
-    /* Add Game Form */
-    .add-game-section {
+        
+    /* Admin Section Styles */
+    .admin-tools-section {
       background: rgba(44, 44, 44, 0.7);
       border-radius: 15px;
       padding: 30px;
       margin: 40px auto;
-      max-width: 600px;
+      max-width: 900px; /* Wider for admin content */
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      display: none; /* مخفي افتراضيًا */
+      display: none; /* Hidden by default */
+      text-align: right; /* For form labels */
     }
-    
-    .add-game-section.visible {
-      display: block; /* يظهر فقط عند إدخال الرمز السري */
+    .admin-tools-section.visible {
+        display: block;
     }
-    
-    .add-game-section h2 {
+
+    .admin-tools-section h2 {
       color: var(--primary);
       margin-bottom: 25px;
       font-size: 1.8rem;
+      text-align: center;
     }
-    
+
+    .admin-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        gap: 15px;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
+        padding-bottom: 15px;
+    }
+
+    .admin-tab-btn {
+        background: var(--gray);
+        color: var(--text-secondary);
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px 10px 0 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .admin-tab-btn.active {
+        background: var(--primary);
+        color: var(--dark);
+        box-shadow: 0 -5px 15px rgba(240, 219, 79, 0.3);
+    }
+
+    .tab-content {
+        display: none; /* Hide tab content by default */
+        padding-top: 20px;
+    }
+    .tab-content.active {
+        display: block; /* Show active tab content */
+    }
+
+    /* Form Group for admin */
     .form-group {
       margin-bottom: 20px;
       text-align: right;
     }
-    
+        
     .form-group label {
       display: block;
       margin-bottom: 8px;
       color: var(--text);
       font-weight: bold;
     }
-    
+        
     .form-group input, 
     .form-group textarea, 
     .form-group select {
@@ -337,7 +405,7 @@
       color: var(--text);
       font-size: 1rem;
     }
-    
+        
     .form-group input:focus, 
     .form-group textarea:focus, 
     .form-group select:focus {
@@ -345,13 +413,13 @@
       outline: none;
       box-shadow: 0 0 10px rgba(240, 219, 79, 0.3);
     }
-    
+        
     .form-group textarea {
       min-height: 100px;
       resize: vertical;
     }
-    
-    .add-btn {
+        
+    .add-btn, .update-password-btn { /* Combined styles for primary action buttons */
       background: linear-gradient(to right, var(--success), #43a047);
       color: white;
       border: none;
@@ -364,12 +432,118 @@
       width: 100%;
       margin-top: 10px;
     }
-    
-    .add-btn:hover {
+        
+    .add-btn:hover, .update-password-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
     }
-    
+
+    /* Game Management List */
+    .game-management-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .game-management-item {
+        background: var(--light-gray);
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        gap: 10px;
+    }
+
+    .game-management-item span {
+        font-size: 1.1rem;
+        color: var(--text);
+        flex-grow: 1; /* Allow name to take space */
+        text-align: right;
+    }
+
+    .game-management-item .actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .game-management-item .actions button {
+        padding: 8px 15px;
+        border-radius: 8px;
+        border: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .game-management-item .actions .edit-btn-small {
+        background: var(--secondary);
+        color: var(--dark);
+    }
+    .game-management-item .actions .delete-btn-small {
+        background: var(--danger);
+        color: white;
+    }
+    .game-management-item .actions button:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+
+    /* Edit Game Form within Admin Panel */
+    .edit-game-form {
+        margin-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+        display: none; /* Hidden by default */
+    }
+    .edit-game-form.active {
+        display: block;
+    }
+
+    .edit-game-form h3 {
+        color: var(--secondary);
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1.6rem;
+    }
+
+    .edit-game-form .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .edit-game-form .form-actions button {
+        flex-grow: 1;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .edit-game-form .form-actions .save-btn {
+        background: var(--primary);
+        color: var(--dark);
+        border: none;
+    }
+    .edit-game-form .form-actions .save-btn:hover {
+        box-shadow: 0 5px 15px rgba(240, 219, 79, 0.4);
+        transform: translateY(-3px);
+    }
+    .edit-game-form .form-actions .cancel-btn {
+        background: var(--gray);
+        color: var(--text);
+        border: 1px solid var(--light-gray);
+    }
+    .edit-game-form .form-actions .cancel-btn:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transform: translateY(-3px);
+    }
+
+
     /* Secret Button */
     .secret-btn {
       position: fixed;
@@ -390,12 +564,12 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
-    
+        
     .secret-btn:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(240, 219, 79, 0.5);
     }
-    
+        
     /* Password Modal */
     .password-modal {
       position: fixed;
@@ -410,11 +584,11 @@
       z-index: 2000;
       display: none;
     }
-    
+        
     .password-modal.visible {
       display: flex;
     }
-    
+        
     .password-box {
       background: var(--gray);
       border-radius: 15px;
@@ -425,12 +599,12 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       text-align: center;
     }
-    
+        
     .password-box h2 {
       color: var(--primary);
       margin-bottom: 20px;
     }
-    
+        
     .password-input {
       width: 100%;
       padding: 15px;
@@ -441,13 +615,13 @@
       font-size: 1rem;
       margin-bottom: 20px;
     }
-    
+        
     .password-input:focus {
       border-color: var(--primary);
       outline: none;
       box-shadow: 0 0 10px rgba(240, 219, 79, 0.3);
     }
-    
+        
     .modal-btn {
       padding: 12px 25px;
       border-radius: 8px;
@@ -457,41 +631,41 @@
       transition: all 0.3s ease;
       font-size: 1rem;
     }
-    
+        
     .submit-btn {
       background: linear-gradient(to right, var(--success), #43a047);
       color: white;
       margin-left: 10px;
     }
-    
+        
     .cancel-btn {
       background: var(--gray);
       color: var(--text);
       border: 1px solid var(--light-gray);
     }
-    
+        
     .modal-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
-    
+        
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+        
     .game-card {
       animation: fadeIn 0.6s ease forwards;
       opacity: 0;
     }
-    
+        
     .game-card:nth-child(2) { animation-delay: 0.1s; }
     .game-card:nth-child(3) { animation-delay: 0.2s; }
     .game-card:nth-child(4) { animation-delay: 0.3s; }
     .game-card:nth-child(5) { animation-delay: 0.4s; }
     .game-card:nth-child(6) { animation-delay: 0.5s; }
-    
+        
     /* No Results */
     .no-results {
       grid-column: 1 / -1;
@@ -500,40 +674,49 @@
       color: var(--text-secondary);
       font-size: 1.2rem;
     }
-    
+        
     /* Responsive Design */
     @media (max-width: 768px) {
       .game-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       }
-      
+          
       h1 {
         font-size: 2.2rem;
       }
-      
+          
       .search-section {
         padding: 20px 15px;
       }
-      
-      .add-game-section {
+          
+      .admin-tools-section { /* Also adjust for admin section */
         padding: 20px;
       }
+
+      .game-management-item {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .game-management-item span {
+        width: 100%; /* Full width for game name */
+        margin-bottom: 10px;
+      }
     }
-    
+        
     @media (max-width: 480px) {
       h1 {
         font-size: 1.8rem;
       }
-      
+          
       .filters {
         gap: 8px;
       }
-      
+          
       .filter-btn {
         padding: 8px 15px;
         font-size: 0.85rem;
       }
-      
+          
       .secret-btn {
         bottom: 15px;
         left: 15px;
@@ -542,7 +725,7 @@
         font-size: 1rem;
       }
     }
-    
+        
     /* صفحة كلمة المرور */
     .password-page {
       position: fixed;
@@ -559,14 +742,14 @@
       padding: 20px;
       text-align: center;
     }
-    
+        
     .password-logo {
       font-size: 4rem;
       color: var(--primary);
       margin-bottom: 20px;
       text-shadow: 0 0 20px rgba(240, 219, 79, 0.7);
     }
-    
+        
     .password-title {
       font-size: 2.5rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -574,7 +757,7 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
     }
-    
+        
     .password-form {
       background: rgba(44, 44, 44, 0.7);
       backdrop-filter: blur(10px);
@@ -585,18 +768,18 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+        
     .password-form h2 {
       color: var(--primary);
       margin-bottom: 25px;
       font-size: 1.8rem;
     }
-    
+        
     .password-input-group {
       position: relative;
       margin-bottom: 25px;
     }
-    
+        
     .password-input-group input {
       width: 100%;
       padding: 15px 20px 15px 50px;
@@ -607,13 +790,13 @@
       color: var(--text);
       transition: all 0.3s ease;
     }
-    
+        
     .password-input-group input:focus {
       border-color: var(--primary);
       outline: none;
       box-shadow: 0 0 15px rgba(240, 219, 79, 0.3);
     }
-    
+        
     .password-input-group i {
       position: absolute;
       left: 20px;
@@ -622,7 +805,7 @@
       color: var(--text-secondary);
       font-size: 1.2rem;
     }
-    
+        
     .password-submit {
       background: linear-gradient(to right, var(--primary), #e6c926);
       color: var(--dark);
@@ -635,18 +818,18 @@
       transition: all 0.3s ease;
       width: 100%;
     }
-    
+        
     .password-submit:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(240, 219, 79, 0.4);
     }
-    
+        
     .password-error {
       color: var(--danger);
       margin-top: 15px;
       display: none;
     }
-    
+        
     .site-content {
       display: none;
     }
@@ -654,7 +837,6 @@
 </head>
 <body>
 
-  <!-- صفحة كلمة المرور -->
   <div id="passwordPage" class="password-page">
     <div class="password-logo">𖤍</div>
     <h1 class="password-title">موقع ألعاب 𖤍RedSword</h1>
@@ -665,27 +847,24 @@
       
       <div class="password-input-group">
         <i class="fas fa-key"></i>
-        <input type="password" id="sitePassword" placeholder="أدخل كلمة المرور">
+        <input type="password" id="sitePasswordInput" placeholder="أدخل كلمة المرور">
       </div>
       
       <button class="password-submit" onclick="checkSitePassword()">
         <i class="fas fa-unlock"></i> دخول
       </button>
       
-      <p class="password-error" id="passwordError">
+      <p class="password-error" id="sitePasswordError">
         <i class="fas fa-exclamation-circle"></i> كلمة المرور غير صحيحة، حاول مرة أخرى
       </p>
     </div>
   </div>
   
-  <!-- محتوى الموقع (سيظهر فقط بعد إدخال كلمة المرور الصحيحة) -->
   <div id="siteContent" class="site-content">
     
-    <!-- انتهى الكود المخصص للـ <body> -->
-  	
     <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="صورة رأس الموقع" class="banner2-img">
-  	
-  	<img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="صورة رأس الموقع" class="banner-img">
+      
+    <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="صورة رأس الموقع" class="banner-img">
     
     <div class="container">
       <header>
@@ -722,342 +901,143 @@
       </section>
       
       <div class="game-grid" id="gameGrid">
-
-
-  	    <!--لعبة الحروف المبعثرة-->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/scattered-words/cover.png" alt="لعبة الحروف المبعثرة ">
-            <span class="game-badge">جديد</span>
           </div>
-          <div class="game-content">
-            <h2>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة الحروف المبعثرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-            <a href="https://e-redsword.github.io/scattered-words/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-  	    
-  	    <!--لعبة الهروب من التابوت-->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Escape-from-the-Coffin/cover.png" alt="لعبة الهروب من التابوت">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة الهروب من التابوت 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-            <a href="https://e-redsword.github.io/Escape-from-the-Coffin/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-
-
-  	    <!--لعبة الاختلافات النصية -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Textual-differences/cover.png" alt="لعبة الاختلافات النصية">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة الاختلافات النصية 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-            <a href="https://e-redsword.github.io/Textual-differences/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-
-
-  <!--لعبة أرقام و فواكه مشفرة -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Coded-numbers-and-fruits/cover.png" alt="لعبة فواكه وأرقام مشفرة">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة ارقام وفواكه مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة فواكه وأرقام مشفرة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-            <a href="https://e-redsword.github.io/Coded-numbers-and-fruits/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-
-
-  	    
-  	    <!--لعبة تسلسل المنطق -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Logic-sequence/cover.png" alt="لعبة تسلسل المنطق">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة تسلسل المنطق 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 </p>
-            <a href="https://e-redsword.github.io/Logic-sequence/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-
-  	    <!--ظل المعنى -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Shadow-of-meaning/cover.png" alt="لعبة ظل المعنى (التخمين)">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة ظل المعنى𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة ظل المعنى 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-            <a href="https://e-redsword.github.io/Shadow-of-meaning/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-  	    <!--لعبة تخمين الشخصية التحدي -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Guess-the-Character-Challenge/cover.png" alt="لعبة تخمين الشخصية (التحدي)">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة تخمين الشخصية (التحدي)𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-            <a href="https://e-redsword.github.io/Guess-the-Character-Challenge/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-8 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-  	
-  	    <!-- لعبة الرمز السري -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/escape-convoy/cover.png" alt="لعبة قافلة الهروب">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة قافلة الهروب</h2>
-            <p>لعبة قافلة الهروب- الاختيارات المشؤومة اختر الطريق الصحيح للوصول للخلاص لعبة مصمملة للعب بالرومات.</p>
-            <a href="https://e-redsword.github.io/escape-convoy/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        <!--لعبة حرب الفواكه -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Redsword_Fruits/cover.jpg" alt="لعبة الرمز السري">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة حرب الفواكه نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة حرب الفواكه نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-            <a href="https://e-redsword.github.io/Redsword_Fruits/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-  	    <!--لعبة حرب الدول -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/War-of-nations/cover.png" alt="لعبة حرب الدول">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة حرب الدول نسخة𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h2>
-            <p>لعبة حرب الدول نسخة 𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃 المطورة</p>
-            <a href="https://e-redsword.github.io/War-of-nations/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.9</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 4-15 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 10 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        <!-- لعبة الرمز السري -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Password_game/cover.jpg" alt="لعبة الرمز السري">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة الرمز السري</h2>
-            <p>لعبة تفاعلية تعتمد على توزيع كلمات مشفرة على اللاعبين ليتعاونوا على كشف كلمة السر الأصلية.</p>
-            <a href="https://e-redsword.github.io/Password_game/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.7</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 2-6 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 20 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- لعبة طبول الحرب -->
-        <div class="game-card" data-category="strategy">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Red/cover.jpg" alt="لعبة طبول الحرب">
-          </div>
-          <div class="game-content">
-            <h2>لعبة طبول الحرب</h2>
-            <p>لعبة تنافسية مشوقة بين اللاعبين لاختبار الذكاء والتكتيك في سياق قتالي رمزي.</p>
-            <a href="https://e-redsword.github.io/Red/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.5</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 2-4 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 30 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- لعبة الرموز المشوشة -->
-        <div class="game-card" data-category="puzzle">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Confused-symbols/cover.jpg" alt="لعبة الرموز المشوشة">
-          </div>
-          <div class="game-content">
-            <h2>لعبة الرموز المشوشة</h2>
-            <p>اختبر قدرتك على التحليل والتركيب من خلال حل معادلات من الرموز الغامضة.</p>
-            <a href="https://e-redsword.github.io/Confused-symbols/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.3</div>
-              <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
-              <div class="stat"><i class="fas fa-clock"></i> 15 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- لعبة صراع النقابات -->
-        <div class="game-card" data-category="strategy">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/Union_conflict/cover.jpg" alt="لعبة صراع النقابات">
-            <span class="game-badge">شائع</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة صراع النقابات</h2>
-            <p>لعبة استراتيجية تنافسية تضعك في صراع بين النقابات، حيث تخطط وتتحالف لتحقيق الهيمنة.</p>
-            <a href="https://e-redsword.github.io/Union_conflict/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.8</div>
-              <div class="stat"><i class="fas fa-user-friends"></i> 3-5 لاعبين</div>
-              <div class="stat"><i class="fas fa-clock"></i> 45 دقيقة</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- لعبة الشخصية السرية -->
-        <div class="game-card" data-category="adventure">
-          <div class="game-image">
-            <img src="https://e-redsword.github.io/secret-character/cover.jpg" alt="لعبة الشخصية السرية">
-            <span class="game-badge">جديد</span>
-          </div>
-          <div class="game-content">
-            <h2>لعبة الشخصية السرية</h2>
-            <p>لعبة مغامرة غامضة حيث تحاول اكتشاف هوية الشخصية السرية من خلال حل الألغاز والقرائن.</p>
-            <a href="https://e-redsword.github.io/secret-character/" target="_blank">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-            <div class="game-stats">
-              <div class="stat"><i class="fas fa-star"></i> 4.6</div>
-              <div class="stat"><i class="fas fa-user"></i> لاعب واحد</div>
-              <div class="stat"><i class="fas fa-clock"></i> 60 دقيقة</div>
-            </div>
-          </div>
-        </div>
-      </div>
       
-      <!-- قسم إضافة لعبة جديدة (مخفي افتراضيًا) -->
-      <section class="add-game-section" id="addGameSection">
-        <h2><i class="fas fa-plus-circle"></i> إضافة لعبة جديدة</h2>
-        <div class="form-group">
-          <label for="gameName">اسم اللعبة:</label>
-          <input type="text" id="gameName" placeholder="أدخل اسم اللعبة">
+      <section class="admin-tools-section" id="adminToolsSection">
+        <h2><i class="fas fa-tools"></i> لوحة تحكم الإدارة</h2>
+
+        <div class="admin-tabs">
+            <button class="admin-tab-btn active" data-tab="games"><i class="fas fa-gamepad"></i> إدارة الألعاب</button>
+            <button class="admin-tab-btn" data-tab="passwords"><i class="fas fa-lock"></i> إدارة كلمات المرور</button>
         </div>
-        
-        <div class="form-group">
-          <label for="gameDescription">وصف اللعبة:</label>
-          <textarea id="gameDescription" placeholder="أدخل وصفًا مختصرًا للعبة"></textarea>
+
+        <div id="gamesTab" class="tab-content active">
+            <h3><i class="fas fa-plus-circle"></i> إضافة لعبة جديدة</h3>
+            <div class="form-group">
+                <label for="gameName">اسم اللعبة:</label>
+                <input type="text" id="gameName" placeholder="أدخل اسم اللعبة">
+            </div>
+            <div class="form-group">
+                <label for="gameDescription">وصف اللعبة:</label>
+                <textarea id="gameDescription" placeholder="أدخل وصفًا مختصرًا للعبة"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="gameCategory">تصنيف اللعبة:</label>
+                <select id="gameCategory">
+                    <option value="strategy">استراتيجية</option>
+                    <option value="puzzle">ألغاز</option>
+                    <option value="adventure">مغامرة</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gameImage">رابط صورة الغلاف:</label>
+                <input type="text" id="gameImage" placeholder="أدخل رابط صورة الغلاف">
+            </div>
+            <div class="form-group">
+                <label for="gameLink">رابط اللعبة:</label>
+                <input type="text" id="gameLink" placeholder="أدخل رابط اللعبة">
+            </div>
+             <div class="form-group">
+                <label for="gameBadge">شارة اللعبة (اختياري، مثل "جديد", "شائع"):</label>
+                <input type="text" id="gameBadge" placeholder="مثل جديد, شائع">
+            </div>
+            <div class="form-group">
+                <label for="gameRating">التقييم (اختياري، مثال: 4.7):</label>
+                <input type="number" id="gameRating" step="0.1" min="1" max="5" placeholder="مثال: 4.7">
+            </div>
+            <div class="form-group">
+                <label for="gamePlayers">عدد اللاعبين (اختياري، مثال: 2-6 لاعبين):</label>
+                <input type="text" id="gamePlayers" placeholder="مثال: 2-6 لاعبين">
+            </div>
+            <div class="form-group">
+                <label for="gameTime">متوسط الوقت (اختياري، مثال: 20 دقيقة):</label>
+                <input type="text" id="gameTime" placeholder="مثال: 20 دقيقة">
+            </div>
+            
+            <button class="add-btn" onclick="addNewGame()">
+                <i class="fas fa-plus"></i> إضافة اللعبة
+            </button>
+
+            <h3><i class="fas fa-edit"></i> تعديل وحذف الألعاب</h3>
+            <div id="gameManagementList" class="game-management-list">
+                </div>
+
+            <div id="editGameForm" class="edit-game-form">
+                <h3>تعديل بيانات اللعبة</h3>
+                <input type="hidden" id="editGameId">
+                <div class="form-group">
+                    <label for="editGameName">اسم اللعبة:</label>
+                    <input type="text" id="editGameName">
+                </div>
+                <div class="form-group">
+                    <label for="editGameDescription">وصف اللعبة:</label>
+                    <textarea id="editGameDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editGameCategory">تصنيف اللعبة:</label>
+                    <select id="editGameCategory">
+                        <option value="strategy">استراتيجية</option>
+                        <option value="puzzle">ألغاز</option>
+                        <option value="adventure">مغامرة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editGameImage">رابط صورة الغلاف:</label>
+                    <input type="text" id="editGameImage">
+                </div>
+                <div class="form-group">
+                    <label for="editGameLink">رابط اللعبة:</label>
+                    <input type="text" id="editGameLink">
+                </div>
+                <div class="form-group">
+                    <label for="editGameBadge">شارة اللعبة (اختياري):</label>
+                    <input type="text" id="editGameBadge">
+                </div>
+                <div class="form-group">
+                    <label for="editGameRating">التقييم (اختياري):</label>
+                    <input type="number" id="editGameRating" step="0.1" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="editGamePlayers">عدد اللاعبين (اختياري):</label>
+                    <input type="text" id="editGamePlayers">
+                </div>
+                <div class="form-group">
+                    <label for="editGameTime">متوسط الوقت (اختياري):</label>
+                    <input type="text" id="editGameTime">
+                </div>
+                <div class="form-actions">
+                    <button class="save-btn" onclick="updateGame()"><i class="fas fa-save"></i> حفظ التعديلات</button>
+                    <button class="cancel-btn" onclick="cancelEditGame()"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-          <label for="gameCategory">تصنيف اللعبة:</label>
-          <select id="gameCategory">
-            <option value="strategy">استراتيجية</option>
-            <option value="puzzle">ألغاز</option>
-            <option value="adventure">مغامرة</option>
-          </select>
+
+        <div id="passwordsTab" class="tab-content">
+            <h3><i class="fas fa-key"></i> تغيير كلمات المرور</h3>
+            <div class="form-group">
+                <label for="newSitePassword">كلمة مرور الموقع الجديدة:</label>
+                <input type="password" id="newSitePassword" placeholder="أدخل كلمة المرور الجديدة للموقع">
+            </div>
+            <div class="form-group">
+                <label for="confirmNewSitePassword">تأكيد كلمة مرور الموقع الجديدة:</label>
+                <input type="password" id="confirmNewSitePassword" placeholder="أعد إدخال كلمة المرور الجديدة للموقع">
+            </div>
+            <p id="sitePasswordMessage" style="color: var(--danger); display: none; margin-bottom: 15px;"></p>
+            <button class="update-password-btn" onclick="updateSitePassword()"><i class="fas fa-sync-alt"></i> تحديث كلمة مرور الموقع</button>
+
+            <h3 style="margin-top: 40px;"><i class="fas fa-user-lock"></i> تغيير كلمة مرور الإدارة</h3>
+            <div class="form-group">
+                <label for="newAdminPassword">كلمة مرور الإدارة الجديدة:</label>
+                <input type="password" id="newAdminPassword" placeholder="أدخل كلمة المرور الجديدة للإدارة">
+            </div>
+            <div class="form-group">
+                <label for="confirmNewAdminPassword">تأكيد كلمة مرور الإدارة الجديدة:</label>
+                <input type="password" id="confirmNewAdminPassword" placeholder="أعد إدخال كلمة المرور الجديدة للإدارة">
+            </div>
+            <p id="adminPasswordMessage" style="color: var(--danger); display: none; margin-bottom: 15px;"></p>
+            <button class="update-password-btn" onclick="updateAdminPassword()"><i class="fas fa-sync-alt"></i> تحديث كلمة مرور الإدارة</button>
         </div>
-        
-        <div class="form-group">
-          <label for="gameImage">رابط صورة الغلاف:</label>
-          <input type="text" id="gameImage" placeholder="أدخل رابط صورة الغلاف">
-        </div>
-        
-        <div class="form-group">
-          <label for="gameLink">رابط اللعبة:</label>
-          <input type="text" id="gameLink" placeholder="أدخل رابط اللعبة">
-        </div>
-        
-        <button class="add-btn" onclick="addNewGame()">
-          <i class="fas fa-plus"></i> إضافة اللعبة
-        </button>
+
       </section>
       
       <footer>
@@ -1066,47 +1046,138 @@
       </footer>
     </div>
     
-    <!-- زر سري لإظهار نافذة كلمة السر -->
     <button id="secretBtn" class="secret-btn">
       <i class="fas fa-lock"></i>
     </button>
     
-    <!-- نافذة إدخال كلمة السر -->
     <div class="password-modal" id="passwordModal">
       <div class="password-box">
         <h2><i class="fas fa-key"></i> الرمز السري</h2>
         <p>أدخل الرمز السري للوصول إلى أدوات الإدارة</p>
-        <input type="password" id="passwordInput" class="password-input" placeholder="أدخل الرمز السري">
+        <input type="password" id="adminPasswordInput" class="password-input" placeholder="أدخل الرمز السري">
         <div>
-          <button class="modal-btn submit-btn" onclick="checkPassword()">دخول</button>
+          <button class="modal-btn submit-btn" onclick="checkAdminPassword()">دخول</button>
           <button class="modal-btn cancel-btn" onclick="closePasswordModal()">إلغاء</button>
         </div>
       </div>
     </div>
-  </div> <!-- نهاية div.site-content -->
-  
+  </div> 
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <script>
-    // 1. كلمة المرور للوصول إلى الموقع (سهلة التعديل)
-    const SITE_PASSWORD = "998877";
+    // 1. Firebase Configuration - استبدل هذه البيانات ببيانات مشروعك الخاصة
+    const firebaseConfig = {
+      apiKey: "AIzaSyCqCU1PtELEYfmM_SlMIZo9oNupHb04h1g",
+      authDomain: "redsword-game.firebaseapp.com",
+      databaseURL: "https://redsword-game-default-rtdb.firebaseio.com",
+      projectId: "redsword-game",
+      storageBucket: "redsword-game.firebasestorage.app",
+      messagingSenderId: "726024757334",
+      appId: "1:726024757334:web:0df237ab1c3c36f13a5bf7",
+      measurementId: "G-VD4M9WVSCX"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const passwordsRef = database.ref('passwords'); // الإشارة إلى عقدة كلمات المرور
+    const gamesRef = database.ref('games'); // الإشارة إلى عقدة الألعاب
     
-    // 2. عناصر DOM لصفحة كلمة المرور
+    // متغيرات لتخزين كلمات المرور من Firebase
+    let SITE_PASSWORD_FIREBASE = "";
+    let ADMIN_PASSWORD_FIREBASE = "";
+    let IS_ADMIN_LOGGED_IN = false; // Flag to track admin status
+    let allGamesData = {}; // Store all games data with their IDs for easy access
+
+    // عناصر DOM لصفحة كلمة المرور الرئيسية
     const passwordPage = document.getElementById('passwordPage');
     const siteContent = document.getElementById('siteContent');
-    const sitePasswordInput = document.getElementById('sitePassword');
-    const passwordError = document.getElementById('passwordError');
+    const sitePasswordInput = document.getElementById('sitePasswordInput');
+    const sitePasswordError = document.getElementById('sitePasswordError');
+
+    // عناصر DOM لنافذة كلمة مرور المسؤول
+    const secretBtn = document.getElementById('secretBtn');
+    const passwordModal = document.getElementById('passwordModal');
+    const adminPasswordInput = document.getElementById('adminPasswordInput');
+    const adminToolsSection = document.getElementById('adminToolsSection'); // Changed from addGameSection
+
+    // DOM elements for password management
+    const newSitePasswordInput = document.getElementById('newSitePassword');
+    const confirmNewSitePasswordInput = document.getElementById('confirmNewSitePassword');
+    const sitePasswordMessage = document.getElementById('sitePasswordMessage');
+    const newAdminPasswordInput = document.getElementById('newAdminPassword');
+    const confirmNewAdminPasswordInput = document.getElementById('confirmNewAdminPassword');
+    const adminPasswordMessage = document.getElementById('adminPasswordMessage');
+
+    // DOM elements for game management forms
+    const gameNameInput = document.getElementById('gameName');
+    const gameDescriptionInput = document.getElementById('gameDescription');
+    const gameCategorySelect = document.getElementById('gameCategory');
+    const gameImageInput = document.getElementById('gameImage');
+    const gameLinkInput = document.getElementById('gameLink');
+    const gameBadgeInput = document.getElementById('gameBadge');
+    const gameRatingInput = document.getElementById('gameRating');
+    const gamePlayersInput = document.getElementById('gamePlayers');
+    const gameTimeInput = document.getElementById('gameTime');
+
+    const gameManagementList = document.getElementById('gameManagementList');
+    const editGameForm = document.getElementById('editGameForm');
+    const editGameIdInput = document.getElementById('editGameId');
+    const editGameNameInput = document.getElementById('editGameName');
+    const editGameDescriptionInput = document.getElementById('editGameDescription');
+    const editGameCategorySelect = document.getElementById('editGameCategory');
+    const editGameImageInput = document.getElementById('editGameImage');
+    const editGameLinkInput = document.getElementById('editGameLink');
+    const editGameBadgeInput = document.getElementById('editGameBadge');
+    const editGameRatingInput = document.getElementById('editGameRating');
+    const editGamePlayersInput = document.getElementById('editGamePlayers');
+    const editGameTimeInput = document.getElementById('editGameTime');
+
+
+    // 2. تحميل كلمات المرور من Firebase
+    passwordsRef.on('value', (snapshot) => {
+      const passwords = snapshot.val();
+      if (passwords) {
+        SITE_PASSWORD_FIREBASE = passwords.sitePassword || "";
+        ADMIN_PASSWORD_FIREBASE = passwords.adminPassword || "";
+        // console.log("Site password loaded from Firebase:", SITE_PASSWORD_FIREBASE);
+        // console.log("Admin password loaded from Firebase:", ADMIN_PASSWORD_FIREBASE);
+      } else {
+        console.warn("No passwords found in Firebase 'passwords' node. Setting defaults.");
+        // Set default passwords if they don't exist
+        passwordsRef.set({
+          sitePassword: "123", // Default site password
+          adminPassword: "admin" // Default admin password
+        }).then(() => {
+          SITE_PASSWORD_FIREBASE = "123";
+          ADMIN_PASSWORD_FIREBASE = "admin";
+          // console.log("Default passwords set in Firebase.");
+        }).catch(error => {
+          console.error("Error setting default passwords:", error);
+        });
+      }
+      // Show password page only if it's currently hidden (first load)
+      if (passwordPage.style.display !== 'none' && siteContent.style.display === 'none') {
+        passwordPage.style.display = 'flex';
+        sitePasswordInput.focus();
+      }
+    }, (errorObject) => {
+      console.error("The read failed: " + errorObject.code);
+      sitePasswordError.textContent = `فشل تحميل كلمة المرور: ${errorObject.code}. تحقق من اتصالك بالإنترنت أو قواعد Firebase.`;
+      sitePasswordError.style.display = 'block';
+    });
     
     // 3. التحقق من كلمة مرور الموقع
     function checkSitePassword() {
-      if (sitePasswordInput.value === SITE_PASSWORD) {
-        // كلمة المرور صحيحة، إظهار المحتوى وإخفاء صفحة كلمة المرور
+      if (sitePasswordInput.value === SITE_PASSWORD_FIREBASE) {
         siteContent.style.display = 'block';
         passwordPage.style.display = 'none';
+        sitePasswordError.style.display = 'none'; // إخفاء أي رسالة خطأ سابقة
       } else {
-        // كلمة المرور غير صحيحة، عرض رسالة الخطأ
-        passwordError.style.display = 'block';
+        sitePasswordError.style.display = 'block';
         sitePasswordInput.value = '';
         sitePasswordInput.focus();
-        
         // إضافة اهتزاز للإشارة إلى الخطأ
         sitePasswordInput.classList.add('shake');
         setTimeout(() => {
@@ -1115,59 +1186,206 @@
       }
     }
     
-    // 4. السماح بالدخول باستخدام زر Enter
+    // 4. السماح بالدخول باستخدام زر Enter لكلمة مرور الموقع
     sitePasswordInput.addEventListener('keyup', function(event) {
       if (event.key === 'Enter') {
         checkSitePassword();
       }
     });
-    
-    // 5. تهيئة الصفحة: إظهار صفحة كلمة المرور فقط عند التحميل
-    document.addEventListener('DOMContentLoaded', function() {
-      passwordPage.style.display = 'flex';
-      siteContent.style.display = 'none';
-      sitePasswordInput.focus();
-    });
 
-    // 6. باقي كود JavaScript الأصلي للموقع
-    // كلمة السر للوصول إلى صفحة الإضافة
-    const SECRET_PASSWORD = "redsword123";
-    
-    // عناصر DOM
-    const secretBtn = document.getElementById('secretBtn');
-    const passwordModal = document.getElementById('passwordModal');
-    const passwordInput = document.getElementById('passwordInput');
-    const addGameSection = document.getElementById('addGameSection');
-    
-    // فتح نافذة كلمة السر عند النقر على الزر السري
+    // 5. فتح نافذة كلمة سر المسؤول
     secretBtn.addEventListener('click', function() {
       passwordModal.classList.add('visible');
-      passwordInput.focus();
+      adminPasswordInput.focus();
     });
     
-    // إغلاق نافذة كلمة السر
+    // 6. إغلاق نافذة كلمة سر المسؤول
     function closePasswordModal() {
       passwordModal.classList.remove('visible');
-      passwordInput.value = '';
+      adminPasswordInput.value = '';
     }
     
-    // التحقق من كلمة السر
-    function checkPassword() {
-      if (passwordInput.value === SECRET_PASSWORD) {
-        addGameSection.classList.add('visible');
+    // 7. التحقق من كلمة سر المسؤول وعرض لوحة الإدارة
+    function checkAdminPassword() {
+      if (adminPasswordInput.value === ADMIN_PASSWORD_FIREBASE) {
+        adminToolsSection.classList.add('visible');
+        IS_ADMIN_LOGGED_IN = true; // Set admin flag
+        updateGameCardAdminButtons(); // Add admin buttons to existing game cards
+        loadGamesForManagement(); // Load games into the admin list
         closePasswordModal();
-        alert('تم فتح وضع الإدارة! يمكنك الآن إضافة لعبة جديدة.');
+        alert('تم فتح وضع الإدارة! يمكنك الآن إدارة الألعاب وكلمات المرور.');
       } else {
         alert('كلمة السر غير صحيحة! حاول مرة أخرى.');
-        passwordInput.value = '';
-        passwordInput.focus();
+        adminPasswordInput.value = '';
+        adminPasswordInput.focus();
       }
     }
-    
-    // تصفية الألعاب
+
+    // 8. دالة لإضافة لعبة جديدة (ستحفظ في Firebase Realtime Database)
+    function addNewGame() {
+      const name = gameNameInput.value;
+      const description = gameDescriptionInput.value;
+      const category = gameCategorySelect.value;
+      const image = gameImageInput.value;
+      const link = gameLinkInput.value;
+      const badge = gameBadgeInput.value || null; // Store null if empty
+      const rating = gameRatingInput.value || (Math.random() * 0.5 + 4.0).toFixed(1);
+      const players = gamePlayersInput.value || ['2-14', '2-14 لاعبين', '14-6 لاعبين'][Math.floor(Math.random() * 3)];
+      const time = gameTimeInput.value || ['15 دقيقة', '30 دقيقة', '45 دقيقة', '60 دقيقة'][Math.floor(Math.random() * 4)];
+      
+      if (!name || !description || !image || !link) {
+        alert('يرجى ملء جميع الحقول المطلوبة (اسم, وصف, صورة, رابط).');
+        return;
+      }
+      
+      const newGameData = {
+        name: name,
+        description: description,
+        category: category,
+        image: image,
+        link: link,
+        badge: badge,
+        rating: rating,
+        players: players,
+        time: time,
+        timestamp: firebase.database.ServerValue.TIMESTAMP 
+      };
+      
+      gamesRef.push(newGameData)
+        .then(() => {
+          alert(`تمت إضافة "${name}" بنجاح إلى Firebase!`);
+          // Clear form fields
+          gameNameInput.value = '';
+          gameDescriptionInput.value = '';
+          gameImageInput.value = '';
+          gameLinkInput.value = '';
+          gameBadgeInput.value = '';
+          gameRatingInput.value = '';
+          gamePlayersInput.value = '';
+          gameTimeInput.value = '';
+        })
+        .catch((error) => {
+          console.error("Error adding game to Firebase: ", error);
+          alert("حدث خطأ أثناء إضافة اللعبة: " + error.message);
+        });
+    }
+
+    // 9. تحميل الألعاب من Firebase وعرضها في الواجهة الرئيسية
+    function loadGamesFromFirebase() {
+        gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
+            const gameGrid = document.getElementById('gameGrid');
+            gameGrid.innerHTML = ''; // مسح الألعاب الموجودة لإعادة بنائها
+            const gamesData = snapshot.val();
+            allGamesData = {}; // Clear previous data
+
+            const gamesArray = [];
+
+            if (gamesData) {
+                for (let key in gamesData) {
+                    allGamesData[key] = gamesData[key]; // Store for easy access by ID
+                    gamesArray.push({ id: key, ...gamesData[key] }); // Store Firebase key as 'id'
+                }
+                gamesArray.sort((a, b) => b.timestamp - a.timestamp); // الأحدث أولاً
+            }
+
+            if (gamesArray.length === 0) {
+                const noGamesMessage = document.createElement('div');
+                noGamesMessage.className = 'no-results';
+                noGamesMessage.innerHTML = `<i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>لا توجد ألعاب لعرضها.</h3><p>أضف بعض الألعاب الجديدة!</p>`;
+                gameGrid.appendChild(noGamesMessage);
+            } else {
+                gamesArray.forEach(game => {
+                    addGameToPage(game);
+                });
+            }
+            filterGames(); // أعد تطبيق الفلترة بعد تحميل الألعاب
+        }, (errorObject) => {
+            console.error("The read failed: " + errorObject.code);
+            const gameGrid = document.getElementById('gameGrid');
+            gameGrid.innerHTML = `<div class="no-results"><i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>فشل تحميل الألعاب</h3><p>حدث خطأ أثناء تحميل الألعاب: ${errorObject.message}.</p><p>الرجاء التحقق من قواعد Firebase والاتصال بالإنترنت.</p></div>`;
+        });
+    }
+
+    // دالة لإضافة لعبة إلى الصفحة (تم تعديلها لاستخدام البيانات مباشرة وتضمين أزرار الإدارة)
+    function addGameToPage(game) {
+      const gameGrid = document.getElementById('gameGrid');
+      const gameCard = document.createElement('div');
+      gameCard.className = 'game-card';
+      gameCard.setAttribute('data-category', game.category);
+      gameCard.setAttribute('data-game-id', game.id); // Store Firebase ID
+      gameCard.style.opacity = '1';
+      
+      const gameLinksHtml = `
+            <a href="${game.link}" target="_blank" class="play-btn">
+              <i class="fas fa-play"></i> تشغيل اللعبة
+            </a>
+      `;
+
+      gameCard.innerHTML = `
+        <div class="game-image">
+          <img src="${game.image}" alt="${game.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/260x260?text=Image+Not+Found';">
+          ${game.badge ? `<span class="game-badge">${game.badge}</span>` : ''}
+        </div>
+        <div class="game-content">
+          <h2>${game.name}</h2>
+          <p>${game.description}</p>
+          <div class="game-links">
+            ${gameLinksHtml}
+            ${IS_ADMIN_LOGGED_IN ? `
+                <button class="edit-btn" onclick="showEditGameForm('${game.id}')">
+                  <i class="fas fa-edit"></i> تعديل
+                </button>
+                <button class="delete-btn" onclick="deleteGame('${game.id}', '${game.name}')">
+                  <i class="fas fa-trash-alt"></i> حذف
+                </button>
+            ` : ''}
+          </div>
+          <div class="game-stats">
+            <div class="stat"><i class="fas fa-star"></i> ${game.rating || 'N/A'}</div>
+            <div class="stat"><i class="fas fa-user-friends"></i> ${game.players || 'N/A'}</div>
+            <div class="stat"><i class="fas fa-clock"></i> ${game.time || 'N/A'}</div>
+          </div>
+        </div>
+      `;
+      
+      // Add the game card to the grid
+      gameGrid.appendChild(gameCard); 
+    }
+
+    // New function to update admin buttons visibility on all game cards
+    function updateGameCardAdminButtons() {
+        document.querySelectorAll('.game-card').forEach(card => {
+            const gameId = card.getAttribute('data-game-id');
+            const gameLinksDiv = card.querySelector('.game-links');
+            
+            // Remove existing admin buttons if any
+            let existingEditBtn = gameLinksDiv.querySelector('.edit-btn');
+            let existingDeleteBtn = gameLinksDiv.querySelector('.delete-btn');
+            if (existingEditBtn) existingEditBtn.remove();
+            if (existingDeleteBtn) existingDeleteBtn.remove();
+
+            if (IS_ADMIN_LOGGED_IN) {
+                const editButton = document.createElement('button');
+                editButton.className = 'edit-btn';
+                editButton.innerHTML = '<i class="fas fa-edit"></i> تعديل';
+                editButton.onclick = () => showEditGameForm(gameId); 
+                gameLinksDiv.appendChild(editButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-btn';
+                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i> حذف';
+                deleteButton.onclick = () => deleteGame(gameId, allGamesData[gameId].name);
+                gameLinksDiv.appendChild(deleteButton);
+            }
+        });
+    }
+
+    // 10. تصفية الألعاب (الكود الأصلي الخاص بك)
     function filterGames() {
       const query = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.querySelectorAll(".game-card");
+      const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+      
       let visibleCount = 0;
       
       cards.forEach(card => {
@@ -1175,7 +1393,10 @@
         const description = card.querySelector("p").textContent.toLowerCase();
         const category = card.getAttribute("data-category");
         
-        if (title.includes(query) || description.includes(query)) {
+        const matchesSearch = title.includes(query) || description.includes(query);
+        const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+
+        if (matchesSearch && matchesCategory) {
           card.style.display = "flex";
           visibleCount++;
         } else {
@@ -1183,9 +1404,8 @@
         }
       });
       
-      // عرض رسالة عدم وجود نتائج
-      const noResults = document.getElementById("noResults");
-      if (noResults) noResults.remove();
+      const existingNoResults = document.getElementById("noResults");
+      if (existingNoResults) existingNoResults.remove();
       
       if (visibleCount === 0) {
         const gameGrid = document.getElementById("gameGrid");
@@ -1201,134 +1421,251 @@
       }
     }
     
-    // التصفية حسب التصنيف
+    // 11. التصفية حسب التصنيف (الكود الأصلي الخاص بك)
     document.querySelectorAll('.filter-btn').forEach(button => {
       button.addEventListener('click', function() {
-        // إزالة الصفة النشطة من جميع الأزرار
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.classList.remove('active');
         });
         
-        // إضافة الصفة النشطة للزر المختار
         this.classList.add('active');
-        
-        const category = this.getAttribute('data-category');
-        const cards = document.querySelectorAll(".game-card");
-        
-        cards.forEach(card => {
-          if (category === 'all' || card.getAttribute('data-category') === category) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        filterGames(); // Just call filterGames, it will handle both search and category
       });
     });
-    
-    // دالة لإضافة لعبة جديدة
-    function addNewGame() {
-      // الحصول على قيم النموذج
-      const name = document.getElementById('gameName').value;
-      const description = document.getElementById('gameDescription').value;
-      const category = document.getElementById('gameCategory').value;
-      const image = document.getElementById('gameImage').value;
-      const link = document.getElementById('gameLink').value;
-      
-      // التحقق من الحقول المطلوبة
-      if (!name || !description || !image || !link) {
-        alert('يرجى ملء جميع الحقول المطلوبة');
-        return;
-      }
-      
-      // إنشاء كائن للعبة الجديدة
-      const newGame = {
-        name: name,
-        description: description,
-        category: category,
-        image: image,
-        link: link
-      };
-      
-      // استرجاع الألعاب الحالية من localStorage أو إنشاء مصفوفة جديدة
-      let games = JSON.parse(localStorage.getItem('games')) || [];
-      
-      // إضافة اللعبة الجديدة إلى المصفوفة
-      games.push(newGame);
-      
-      // حفظ الألعاب في localStorage
-      localStorage.setItem('games', JSON.stringify(games));
-      
-      // إضافة اللعبة إلى الصفحة
-      addGameToPage(newGame);
-      
-      // إعادة تعيين النموذج
-      document.getElementById('gameName').value = '';
-      document.getElementById('gameDescription').value = '';
-      document.getElementById('gameImage').value = '';
-      document.getElementById('gameLink').value = '';
-      
-      // رسالة نجاح
-      alert(`تمت إضافة "${name}" بنجاح إلى المكتبة!`);
+
+    // --- Admin Functionality ---
+
+    // Function to load games for management in the admin section
+    function loadGamesForManagement() {
+        gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
+            gameManagementList.innerHTML = ''; // Clear existing list
+            const gamesData = snapshot.val();
+            allGamesData = {}; // Clear and re-populate global storage
+
+            const gamesArray = [];
+
+            if (gamesData) {
+                for (let key in gamesData) {
+                    allGamesData[key] = gamesData[key]; // Store for easy access by ID
+                    gamesArray.push({ id: key, ...gamesData[key] });
+                }
+                gamesArray.sort((a, b) => b.timestamp - a.timestamp); // Sort by newest
+            }
+
+            if (gamesArray.length === 0) {
+                gameManagementList.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ألعاب لإدارتها.</p>`;
+            } else {
+                gamesArray.forEach(game => {
+                    const item = document.createElement('div');
+                    item.className = 'game-management-item';
+                    item.setAttribute('data-game-id', game.id);
+                    item.innerHTML = `
+                        <span>${game.name}</span>
+                        <div class="actions">
+                            <button class="edit-btn-small" onclick="showEditGameForm('${game.id}')">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="delete-btn-small" onclick="deleteGame('${game.id}', '${game.name}')">
+                                <i class="fas fa-trash-alt"></i> حذف
+                            </button>
+                        </div>
+                    `;
+                    gameManagementList.appendChild(item);
+                });
+            }
+        }, (errorObject) => {
+            console.error("Error loading games for management: " + errorObject.code);
+            gameManagementList.innerHTML = `<p style="color: var(--danger); text-align: center;">فشل تحميل قائمة الألعاب للإدارة.</p>`;
+        });
     }
-    
-    // دالة لإضافة لعبة إلى الصفحة
-    function addGameToPage(game) {
-      // توليد إحصائيات عشوائية
-      const rating = (Math.random() * 0.5 + 4.0).toFixed(1);
-      const players = ['2-14', '2-14 لاعبين', '14-6 لاعبين'][Math.floor(Math.random() * 3)];
-      const time = ['15 دقيقة', '30 دقيقة', '45 دقيقة', '60 دقيقة'][Math.floor(Math.random() * 4)];
-      
-      const gameCard = document.createElement('div');
-      gameCard.className = 'game-card';
-      gameCard.setAttribute('data-category', game.category);
-      gameCard.style.opacity = '1';
-      
-      gameCard.innerHTML = `
-        <div class="game-image">
-          <img src="${game.image}" alt="${game.name}">
-          <span class="game-badge">جديد</span>
-        </div>
-        <div class="game-content">
-          <h2>${game.name}</h2>
-          <p>${game.description}</p>
-          <a href="${game.link}" target="_blank">
-            <i class="fas fa-play"></i> تشغيل اللعبة
-          </a>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> ${rating}</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> ${players}</div>
-            <div class="stat"><i class="fas fa-clock"></i> ${time}</div>
-          </div>
-        </div>
-      `;
-      
-      // إضافة اللعبة إلى بداية قائمة الألعاب
-      document.getElementById('gameGrid').prepend(gameCard);
-      
-      // إضافة تأثير ظهور للبطاقة الجديدة
-      gameCard.style.animation = 'fadeIn 0.6s ease forwards';
+
+    // Function to show the edit game form and populate it
+    function showEditGameForm(gameId) {
+        const gameData = allGamesData[gameId]; // Retrieve from global storage
+        if (!gameData) {
+            alert('خطأ: لم يتم العثور على بيانات اللعبة للتعديل.');
+            return;
+        }
+
+        editGameForm.classList.add('active');
+        editGameIdInput.value = gameId;
+        editGameNameInput.value = gameData.name;
+        editGameDescriptionInput.value = gameData.description;
+        editGameCategorySelect.value = gameData.category;
+        editGameImageInput.value = gameData.image;
+        editGameLinkInput.value = gameData.link;
+        editGameBadgeInput.value = gameData.badge || '';
+        editGameRatingInput.value = gameData.rating || '';
+        editGamePlayersInput.value = gameData.players || '';
+        editGameTimeInput.value = gameData.time || '';
+
+        // Scroll to the edit form
+        editGameForm.scrollIntoView({ behavior: 'smooth' });
     }
-    
-    // تحميل الألعاب من localStorage عند بدء التشغيل
-    function loadSavedGames() {
-      const savedGames = JSON.parse(localStorage.getItem('games')) || [];
-      savedGames.forEach(game => {
-        addGameToPage(game);
-      });
+
+    // Function to cancel editing a game
+    function cancelEditGame() {
+        editGameForm.classList.remove('active');
+        // Clear form fields
+        editGameIdInput.value = '';
+        editGameNameInput.value = '';
+        editGameDescriptionInput.value = '';
+        editGameCategorySelect.value = 'puzzle'; // Reset to default
+        editGameImageInput.value = '';
+        editGameLinkInput.value = '';
+        editGameBadgeInput.value = '';
+        editGameRatingInput.value = '';
+        editGamePlayersInput.value = '';
+        editGameTimeInput.value = '';
     }
-    
-    // تهيئة الصفحة عند التحميل
+
+    // Function to update a game in Firebase
+    function updateGame() {
+        const gameId = editGameIdInput.value;
+        if (!gameId) {
+            alert('خطأ: لا يوجد معرف لعبة للتعديل.');
+            return;
+        }
+
+        const updatedData = {
+            name: editGameNameInput.value,
+            description: editGameDescriptionInput.value,
+            category: editGameCategorySelect.value,
+            image: editGameImageInput.value,
+            link: editGameLinkInput.value,
+            badge: editGameBadgeInput.value || null, // Store null if empty
+            rating: editGameRatingInput.value || null,
+            players: editGamePlayersInput.value || null,
+            time: editGameTimeInput.value || null,
+            // Keep original timestamp for sorting consistency, or update if desired
+        };
+
+        gamesRef.child(gameId).update(updatedData)
+            .then(() => {
+                alert(`تم تحديث اللعبة "${updatedData.name}" بنجاح!`);
+                cancelEditGame(); // Hide and clear the form
+            })
+            .catch(error => {
+                console.error("Error updating game:", error);
+                alert("حدث خطأ أثناء تحديث اللعبة: " + error.message);
+            });
+    }
+
+    // Function to delete a game from Firebase
+    function deleteGame(gameId, gameName) {
+        if (confirm(`هل أنت متأكد أنك تريد حذف اللعبة "${gameName}"؟ هذا الإجراء لا يمكن التراجع عنه.`)) {
+            gamesRef.child(gameId).remove()
+                .then(() => {
+                    alert(`تم حذف اللعبة "${gameName}" بنجاح.`);
+                })
+                .catch(error => {
+                    console.error("Error deleting game:", error);
+                    alert("حدث خطأ أثناء حذف اللعبة: " + error.message);
+                });
+        }
+    }
+
+    // Function to update site password
+    function updateSitePassword() {
+        const newPass = newSitePasswordInput.value;
+        const confirmPass = confirmNewSitePasswordInput.value;
+
+        sitePasswordMessage.style.display = 'none'; // Clear previous messages
+        sitePasswordMessage.style.color = 'var(--danger)'; // Reset color
+
+        if (newPass === "") {
+            sitePasswordMessage.textContent = 'كلمة المرور لا يمكن أن تكون فارغة.';
+            sitePasswordMessage.style.display = 'block';
+            return;
+        }
+        if (newPass !== confirmPass) {
+            sitePasswordMessage.textContent = 'كلمتا المرور غير متطابقتين.';
+            sitePasswordMessage.style.display = 'block';
+            return;
+        }
+
+        passwordsRef.update({ sitePassword: newPass })
+            .then(() => {
+                sitePasswordMessage.textContent = 'تم تحديث كلمة مرور الموقع بنجاح!';
+                sitePasswordMessage.style.color = 'var(--success)';
+                sitePasswordMessage.style.display = 'block';
+                newSitePasswordInput.value = '';
+                confirmNewSitePasswordInput.value = '';
+                SITE_PASSWORD_FIREBASE = newPass; // Update local variable
+            })
+            .catch(error => {
+                console.error("Error updating site password:", error);
+                sitePasswordMessage.textContent = `حدث خطأ: ${error.message}`;
+                sitePasswordMessage.style.color = 'var(--danger)';
+                sitePasswordMessage.style.display = 'block';
+            });
+    }
+
+    // Function to update admin password
+    function updateAdminPassword() {
+        const newPass = newAdminPasswordInput.value;
+        const confirmPass = confirmNewAdminPasswordInput.value;
+
+        adminPasswordMessage.style.display = 'none'; // Clear previous messages
+        adminPasswordMessage.style.color = 'var(--danger)'; // Reset color
+
+        if (newPass === "") {
+            adminPasswordMessage.textContent = 'كلمة المرور لا يمكن أن تكون فارغة.';
+            adminPasswordMessage.style.display = 'block';
+            return;
+        }
+        if (newPass !== confirmPass) {
+            adminPasswordMessage.textContent = 'كلمتا المرور غير متطابقتين.';
+            adminPasswordMessage.style.display = 'block';
+            return;
+        }
+
+        passwordsRef.update({ adminPassword: newPass })
+            .then(() => {
+                adminPasswordMessage.textContent = 'تم تحديث كلمة مرور الإدارة بنجاح!';
+                adminPasswordMessage.style.color = 'var(--success)';
+                adminPasswordMessage.style.display = 'block';
+                newAdminPasswordInput.value = '';
+                confirmNewAdminPasswordInput.value = '';
+                ADMIN_PASSWORD_FIREBASE = newPass; // Update local variable
+            })
+            .catch(error => {
+                console.error("Error updating admin password:", error);
+                adminPasswordMessage.textContent = `حدث خطأ: ${error.message}`;
+                adminPasswordMessage.style.color = 'var(--danger)';
+                adminPasswordMessage.style.display = 'block';
+            });
+    }
+
+    // Tab switching logic for admin panel
+    document.querySelectorAll('.admin-tab-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            const targetTab = this.getAttribute('data-tab');
+            document.getElementById(targetTab + 'Tab').classList.add('active');
+
+            // Optionally, clear password messages when switching tabs
+            sitePasswordMessage.style.display = 'none';
+            adminPasswordMessage.style.display = 'none';
+        });
+    });
+
+    // 12. تهيئة الصفحة عند التحميل:
     document.addEventListener('DOMContentLoaded', function() {
-      // تحميل الألعاب المحفوظة
-      loadSavedGames();
+      // The password page visibility is handled by the Firebase password load listener.
       
-      // تهيئة تأثيرات الظهور
-      setTimeout(() => {
-        document.querySelectorAll('.game-card').forEach(card => {
-          card.style.opacity = '1';
-        });
-      }, 300);
+      // Load games initially
+      loadGamesFromFirebase();
+      
+      // Initial focus for site password input
+      if (sitePasswordInput) {
+        sitePasswordInput.focus();
+      }
     });
+
   </script>
 </body>
 </html>
