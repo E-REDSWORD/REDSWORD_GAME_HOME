@@ -1851,13 +1851,8 @@
         sitePasswordError.style.display = 'none';
         loadGamesFromFirebase();
       } else {
-        sitePasswordError.style.display = 'block';
-        sitePasswordInput.value = '';
-        sitePasswordInput.focus();
-        sitePasswordInput.classList.add('shake');
-        setTimeout(() => {
-          sitePasswordInput.classList.remove('shake');
-        }, 500);
+        // توجيه المستخدم إلى صفحة الأسئلة عند إدخال كلمة مرور خاطئة
+        window.location.href = "https://e-redsword.github.io/maintenance/";
       }
     }
     
