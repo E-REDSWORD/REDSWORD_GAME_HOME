@@ -1,2278 +1,2269 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RedSword | إدارة الموقع</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #FF6B35;
-      --primary-dark: #E85A2A;
-      --secondary: #2F9C95;
-      --secondary-dark: #247871;
-      --dark: #1A1A2E;
-      --darker: #0D0D1A;
-      --gray: #2D2D44;
-      --light-gray: #3A3A55;
-      --text: #FFFFFF;
-      --text-secondary: #CCCCDD;
-      --success: #4CAF50;
-      --warning: #FFC107;
-      --danger: #F44336;
-      --accent: #8A4FFF;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background: linear-gradient(135deg, var(--darker), var(--dark));
-      color: var(--text);
-      min-height: 100vh;
-      font-size: 14px;
-    }
-    
-    .password-page {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--darker), var(--dark));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 15px;
-      text-align: center;
-    }
-    
-    .password-logo {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
-    }
-    
-    .password-title {
-      font-size: 1.5rem;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
-    }
-    
-    .password-form {
-      background: rgba(45, 45, 68, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .password-form h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-    
-    .password-input-group {
-      position: relative;
-      margin-bottom: 15px;
-    }
-    
-    .password-input-group input {
-      width: 100%;
-      padding: 12px 15px 12px 40px;
-      font-size: 0.9rem;
-      border-radius: 25px;
-      border: 2px solid transparent;
-      background: rgba(30, 30, 30, 0.8);
-      color: var(--text);
-      transition: all 0.3s ease;
-    }
-    
-    .password-input-group input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-    }
-    
-    .password-input-group i {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-secondary);
-      font-size: 1rem;
-    }
-    
-    .password-submit {
-      background: linear-gradient(to right, var(--primary), var(--primary-dark));
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-weight: bold;
-      border: none;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-    
-    .password-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
-    }
-    
-    .password-error {
-      color: var(--danger);
-      margin-top: 10px;
-      display: none;
-      font-size: 0.8rem;
-    }
-    
-    .site-content {
-      display: none;
-      min-height: 100vh;
-    }
-    
-    /* Header Styles - MODIFIED */
-    header {
-      background: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 8px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
-    }
-    
-    .logo-text h1 {
-      font-size: 1.7rem;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-    }
-    
-    .logo-text p {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      margin: 0;
-    }
-    
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 35px;
-      height: 35px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .menu-toggle span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background-color: var(--primary);
-      margin: 2px 0;
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-    
-    .menu-toggle:hover span {
-      background-color: var(--primary);
-    }
-    
-    .nav-menu {
-      position: fixed;
-      top: px; /* تغيير هنا: بداية القائمة أسفل الرأس مباشرة */
-      right: -280px;
-      width: 280px;
-      height: calc(100vh - 55px); /* تغيير هنا: ارتفاع القائمة يتناسب مع المساحة المتبقية */
-      background: rgba(26, 26, 46, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-      z-index: 999;
-      transition: right 0.3s ease;
-      overflow-y: auto;
-    }
-    
-    .nav-menu.active {
-      right: 0;
-    }
-    
-    .close-menu {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 1.2rem;
-      color: var(--text);
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    
-    .close-menu:hover {
-      color: var(--primary);
-    }
-    
-    .nav-item {
-      display: block;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 10px 12px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-    }
-    
-    .nav-item:hover {
-      color: var(--primary);
-      background: rgba(255, 107, 53, 0.1);
-    }
-    
-    .nav-item.active {
-      color: var(--primary);
-      background: rgba(255, 107, 53, 0.2);
-    }
-    
-    .user-actions {
-      padding: 15px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 15px;
-    }
-    
-    .social-icons {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-    }
-    
-    .social-icon {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--gray);
-      border-radius: 50%;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .social-icon:hover {
-      background: var(--primary);
-      transform: translateY(-2px);
-    }
-    
-    /* Main Layout */
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 15px;
-      gap: 15px;
-    }
-    
-    /* Sidebar */
-    .sidebar {
-      width: 100%;
-      background: rgba(26, 26, 46, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 20px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      height: fit-content;
-      order: 2;
-    }
-    
-    .sidebar-section {
-      margin-bottom: 20px;
-    }
-    
-    .sidebar-title {
-      color: var(--primary);
-      font-size: 1rem;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .category-list {
-      list-style: none;
-    }
-    
-    .category-item {
-      padding: 10px 12px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-    }
-    
-    .category-item:hover {
-      background: rgba(255, 107, 53, 0.1);
-    }
-    
-    .category-item.active {
-      background: rgba(255, 107, 53, 0.2);
-      color: var(--primary);
-    }
-    
-    .quick-links {
-      list-style: none;
-    }
-    
-    .quick-link {
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .quick-link:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--primary);
-    }
-    
-    .stats-box {
-      background: rgba(45, 45, 68, 0.5);
-      border-radius: 10px;
-      padding: 12px;
-      margin-top: 15px;
-    }
-    
-    .stat-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.85rem;
-    }
-    
-    .stat-item:last-child {
-      border-bottom: none;
-    }
-    
-    /* Main Content */
-    .main-content {
-      order: 1;
-      width: 100%;
-    }
-    
-    .banner-section {
-      margin-bottom: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .banner-img {
-      width: 100%;
-      display: block;
-    }
-    
-    .banner2-img {
-      width: 100%;
-      display: block;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    
-    .welcome-section {
-      background: linear-gradient(135deg, rgba(45, 45, 68, 0.7), rgba(58, 58, 85, 0.7));
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .welcome-section h2 {
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-size: 1.3rem;
-    }
-    
-    .welcome-section p {
-      color: var(--text-secondary);
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-      font-size: 0.9rem;
-    }
-    
-    .search-section {
-      background: rgba(45, 45, 68, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    #searchBox {
-      position: relative;
-      margin-bottom: 15px;
-    }
-    
-    #searchInput {
-      width: 100%;
-      padding: 12px 15px 12px 40px;
-      font-size: 0.9rem;
-      border-radius: 25px;
-      border: 2px solid transparent;
-      background: rgba(30, 30, 30, 0.8);
-      color: var(--text);
-      transition: all 0.3s ease;
-    }
-    
-    #searchInput:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-    }
-    
-    #searchBox i {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-secondary);
-      font-size: 1rem;
-    }
-    
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .filter-btn {
-      background: var(--gray);
-      color: var(--text);
-      border: none;
-      padding: 8px 15px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--primary);
-      color: var(--dark);
-    }
-    
-    .section-title {
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin: 30px 0 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 107, 53, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    
-    .game-card {
-      background: linear-gradient(135deg, var(--gray), var(--light-gray));
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      position: relative;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .game-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--primary);
-    }
-    
-    .game-image {
-      width: 100%;
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .game-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    
-    .game-card:hover .game-image img {
-      transform: scale(1.05);
-    }
-    
-    .game-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--primary);
-      color: var(--dark);
-      padding: 4px 10px;
-      border-radius: 15px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      z-index: 2;
-    }
-    
-    .game-content {
-      padding: 15px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .game-card h2 {
-      color: var(--secondary);
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-    
-    .game-card p {
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 15px;
-      flex-grow: 1;
-      font-size: 0.85rem;
-    }
-    
-    .game-card .game-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
-    }
-    
-    .game-card .game-links a,
-    .game-card .game-links button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      gap: 6px;
-      font-size: 0.85rem;
-      border: none;
-      cursor: pointer;
-      flex-grow: 1;
-      min-width: 80px;
-    }
-    
-    .game-card a.play-btn {
-      background: linear-gradient(to right, var(--primary), var(--primary-dark));
-      color: white;
-    }
-    
-    .game-card a.play-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
-    }
-    
-    .game-card button.edit-btn {
-      background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
-      color: white;
-    }
-    
-    .game-card button.edit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(47, 156, 149, 0.4);
-    }
-    
-    .game-card button.delete-btn {
-      background: linear-gradient(to right, var(--danger), #e04b4b);
-      color: white;
-    }
-    
-    .game-card button.delete-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
-    }
-    
-    .game-stats {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-    
-    .stat {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    
-    /* About Section */
-    .about-section {
-      background: rgba(45, 45, 68, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 30px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    .about-text h3 {
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-    
-    .about-text p {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 15px;
-      font-size: 0.9rem;
-    }
-    
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    
-    .feature {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(58, 58, 85, 0.5);
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-    
-    .feature i {
-      color: var(--primary);
-      font-size: 1rem;
-    }
-    
-    /* Contact Section */
-    .contact-section {
-      background: rgba(45, 45, 68, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 30px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    .contact-info h3 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .contact-details {
-      list-style: none;
-    }
-    
-    .contact-details li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    
-    .contact-details i {
-      color: var(--primary);
-      font-size: 1rem;
-      width: 20px;
-    }
-    
-    .contact-form .form-group {
-      margin-bottom: 15px;
-    }
-    
-    .contact-form label {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text);
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 2px solid transparent;
-      background: rgba(30, 30, 30, 0.8);
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-    
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
-    }
-    
-    .contact-form textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-    
-    .submit-btn {
-      background: linear-gradient(to right, var(--primary), var(--primary-dark));
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--darker);
-      padding: 30px 0 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .footer-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 15px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    .footer-col h4 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1rem;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 8px;
-    }
-    
-    .footer-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-    }
-    
-    .footer-links a:hover {
-      color: var(--primary);
-      transform: translateX(-3px);
-    }
-    
-    .footer-bottom {
-      text-align: center;
-      padding-top: 20px;
-      margin-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-    
-    /* Admin Panel Styles */
-    .admin-panel {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--darker), var(--dark));
-      z-index: 2000;
-      display: none;
-      overflow-y: auto;
-      padding: 15px;
-    }
-    
-    .admin-panel.visible {
-      display: block;
-    }
-    
-    .admin-header {
-      background: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .admin-header h1 {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-      font-size: 1.3rem;
-    }
-    
-    .admin-close-btn {
-      background: var(--danger);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .admin-close-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
-    }
-    
-    .admin-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px;
-    }
-    
-    .admin-section {
-      background: rgba(45, 45, 68, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .admin-section h2 {
-      color: var(--primary);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(255, 107, 53, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.2rem;
-    }
-    
-    .admin-form {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-    
-    .form-group {
-      margin-bottom: 15px;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text);
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 2px solid transparent;
-      background: rgba(30, 30, 30, 0.8);
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-    
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
-    }
-    
-    .form-group textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-    
-    .form-full-width {
-      grid-column: 1 / -1;
-    }
-    
-    .admin-submit-btn {
-      background: linear-gradient(to right, var(--success), #43a047);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      grid-column: 1 / -1;
-      justify-self: end;
-      margin-top: 15px;
-      font-size: 0.9rem;
-    }
-    
-    .admin-submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
-    }
-    
-    .games-list {
-      margin-top: 20px;
-    }
-    
-    .game-item {
-      background: rgba(58, 58, 85, 0.5);
-      border-radius: 6px;
-      padding: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .game-item-info {
-      flex: 1;
-    }
-    
-    .game-item-info h3 {
-      color: var(--secondary);
-      margin-bottom: 5px;
-      font-size: 1rem;
-    }
-    
-    .game-item-info p {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      margin: 0;
-    }
-    
-    .game-item-actions {
-      display: flex;
-      gap: 8px;
-    }
-    
-    .game-item-actions button {
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      font-size: 0.8rem;
-    }
-    
-    .game-edit-btn {
-      background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
-      color: white;
-    }
-    
-    .game-edit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(47, 156, 149, 0.4);
-    }
-    
-    .game-delete-btn {
-      background: linear-gradient(to right, var(--danger), #e04b4b);
-      color: white;
-    }
-    
-    .game-delete-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
-    }
-    
-    .password-management {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    /* Secret Button */
-    .secret-btn {
-      position: fixed;
-      bottom: 15px;
-      left: 15px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: var(--dark);
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .secret-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 12px rgba(255, 107, 53, 0.5);
-    }
-    
-    /* Password Modal */
-    .password-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      display: none;
-    }
-    
-    .password-modal.visible {
-      display: flex;
-    }
-    
-    .password-box {
-      background: var(--gray);
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 350px;
-      width: 90%;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-    }
-    
-    .password-box h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-    
-    .password-input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 6px;
-      background: rgba(30, 30, 30, 0.8);
-      color: var(--text);
-      border: 2px solid transparent;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-    
-    .password-input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
-    }
-    
-    .modal-btn {
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .submit-btn {
-      background: linear-gradient(to right, var(--success), #43a047);
-      color: white;
-      margin-left: 8px;
-    }
-    
-    .cancel-btn {
-      background: var(--gray);
-      color: var(--text);
-      border: 1px solid var(--light-gray);
-    }
-    
-    .modal-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Responsive Design */
-    @media (min-width: 768px) {
-      body {
-        font-size: 15px;
-      }
-      
-      .main-container {
-        flex-direction: row;
-      }
-      
-      .sidebar {
-        width: 250px;
-        order: 1;
-        position: sticky;
-        top: 70px;
-      }
-      
-      .main-content {
-        order: 2;
-        flex: 1;
-      }
-      
-      .about-content {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .about-features {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .contact-container {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .admin-form {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .password-management {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .game-item {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
-    
-    @media (min-width: 992px) {
-      .footer-container {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .game-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .section-title {
-        font-size: 1.2rem;
-      }
-      
-      .welcome-section,
-      .search-section,
-      .about-section,
-      .contact-section {
-        padding: 15px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedSword | إدارة الموقع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2A;
+            --secondary: #2F9C95;
+            --secondary-dark: #247871;
+            --dark: #1A1A2E;
+            --darker: #0D0D1A;
+            --gray: #2D2D44;
+            --light-gray: #3A3A55;
+            --text: #FFFFFF;
+            --text-secondary: #CCCCDD;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+            --accent: #8A4FFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text);
+            min-height: 100vh;
+            font-size: 14px;
+        }
+        
+        .password-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .password-logo {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
+        }
+        
+        .password-title {
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .password-form {
+            background: rgba(45, 45, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .password-form h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .password-input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .password-input-group input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            font-size: 0.9rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            background: rgba(30, 30, 30, 0.8);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .password-input-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        .password-input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .password-submit {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .password-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+        }
+        
+        .password-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: linear-gradient(to right, #999, #777);
+        }
+        
+        .password-error {
+            color: var(--danger);
+            margin-top: 10px;
+            display: none;
+            font-size: 0.8rem;
+        }
+        
+        .site-content {
+            display: none;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles - MODIFIED */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.7rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        
+        .logo-text p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--primary);
+            margin: 2px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .menu-toggle:hover span {
+            background-color: var(--primary);
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: px; /* تغيير هنا: بداية القائمة أسفل الرأس مباشرة */
+            right: -280px;
+            width: 280px;
+            height: calc(100vh - 55px); /* تغيير هنا: ارتفاع القائمة يتناسب مع المساحة المتبقية */
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.2rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-menu:hover {
+            color: var(--primary);
+        }
+        
+        .nav-item {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-item:hover {
+            color: var(--primary);
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(255, 107, 53, 0.2);
+        }
+        
+        .user-actions {
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray);
+            border-radius: 50%;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+            gap: 15px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 100%;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: fit-content;
+            order: 2;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-title {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-item {
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .category-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        .category-item.active {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--primary);
+        }
+        
+        .quick-links {
+            list-style: none;
+        }
+        
+        .quick-link {
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+        }
+        
+        .stats-box {
+            background: rgba(45, 45, 68, 0.5);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Main Content */
+        .main-content {
+            order: 1;
+            width: 100%;
+        }
+        
+        .banner-section {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner-img {
+            width: 100%;
+            display: block;
+        }
+        
+        .banner2-img {
+            width: 100%;
+            display: block;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .welcome-section {
+            background: linear-gradient(135deg, rgba(45, 45, 68, 0.7), rgba(58, 58, 85, 0.7));
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .welcome-section h2 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .welcome-section p {
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .search-section {
+            background: rgba(45, 45, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #searchBox {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            font-size: 0.9rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            background: rgba(30, 30, 30, 0.8);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        #searchInput:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        #searchBox i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            background: var(--gray);
+            color: var(--text);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .game-card {
+            background: linear-gradient(135deg, var(--gray), var(--light-gray));
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--primary);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .game-card:hover .game-image img {
+            transform: scale(1.05);
+        }
+        
+        .game-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .game-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-card h2 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .game-card p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            font-size: 0.85rem;
+        }
+        
+        .game-card .game-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+        
+        .game-card .game-links a, .game-card .game-links button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            gap: 6px;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            flex-grow: 1;
+            min-width: 80px;
+        }
+        
+        .game-card a.play-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .game-card a.play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+        }
+        
+        .game-card button.edit-btn {
+            background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
+            color: white;
+        }
+        
+        .game-card button.edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(47, 156, 149, 0.4);
+        }
+        
+        .game-card button.delete-btn {
+            background: linear-gradient(to right, var(--danger), #e04b4b);
+            color: white;
+        }
+        
+        .game-card button.delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+        }
+        
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: rgba(45, 45, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(58, 58, 85, 0.5);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .feature i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: rgba(45, 45, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .contact-details i {
+            color: var(--primary);
+            font-size: 1rem;
+            width: 20px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            background: rgba(30, 30, 30, 0.8);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .contact-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 30px 0 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .footer-col h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .admin-panel.visible {
+            display: block;
+        }
+        
+        .admin-header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .admin-header h1 {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .admin-close-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .admin-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .admin-section {
+            background: rgba(45, 45, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .admin-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .admin-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            background: rgba(30, 30, 30, 0.8);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .form-full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .admin-submit-btn {
+            background: linear-gradient(to right, var(--success), #43a047);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-column: 1 / -1;
+            justify-self: end;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .admin-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+        }
+        
+        .games-list {
+            margin-top: 20px;
+        }
+        
+        .game-item {
+            background: rgba(58, 58, 85, 0.5);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .game-item-info {
+            flex: 1;
+        }
+        
+        .game-item-info h3 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .game-item-info p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .game-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .game-item-actions button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .game-edit-btn {
+            background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
+            color: white;
+        }
+        
+        .game-edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(47, 156, 149, 0.4);
+        }
+        
+        .game-delete-btn {
+            background: linear-gradient(to right, var(--danger), #e04b4b);
+            color: white;
+        }
+        
+        .game-delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+        }
+        
+        .password-management {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        /* Secret Button */
+        .secret-btn {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .secret-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(255, 107, 53, 0.5);
+        }
+        
+        /* Password Modal */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .password-modal.visible {
+            display: flex;
+        }
+        
+        .password-box {
+            background: var(--gray);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 350px;
+            width: 90%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .password-box h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            background: rgba(30, 30, 30, 0.8);
+            color: var(--text);
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .password-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--success), #43a047);
+            color: white;
+            margin-left: 8px;
+        }
+        
+        .cancel-btn {
+            background: var(--gray);
+            color: var(--text);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            
+            .main-container {
+                flex-direction: row;
+            }
+            
+            .sidebar {
+                width: 250px;
+                order: 1;
+                position: sticky;
+                top: 70px;
+            }
+            
+            .main-content {
+                order: 2;
+                flex: 1;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .admin-form {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .password-management {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .game-item {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .welcome-section, .search-section, .about-section, .contact-section {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="passwordPage" class="password-page">
-    <div class="password-logo">𖤍</div>
-    <h1 class="password-title">مرحباً بك في 𖤍|𝐑𝐞𝐝𝐒𝐰𝐨𝐫𝐝</h1>
-    
-    <div class="password-form">
-      <h2><i class="fas fa-lock"></i> أدخل كلمة المرور</h2>
-      <p>يجب إدخال كلمة المرور الصحيحة للوصول إلى محتوى الموقع</p>
-      
-      <div class="password-input-group">
-        <i class="fas fa-key"></i>
-        <input type="password" id="sitePasswordInput" placeholder="أدخل كلمة المرور">
-      </div>
-      
-      <button class="password-submit" onclick="checkSitePassword()">
-        <i class="fas fa-unlock"></i> دخول
-      </button>
-      
-      <p class="password-error" id="sitePasswordError">
-        <i class="fas fa-exclamation-circle"></i> كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى
-      </p>
-    </div>
-  </div>
-  
-  <div id="siteContent" class="site-content">
-    <header>
-      <div class="header-container">
-        <div class="logo">
-          <div class="logo-icon">𖤍</div>
-          <div class="logo-text">
-            <h1>𖤍|𝐑𝐞𝐝𝐒𝐰𝐨𝐫𝐝</h1>
-            <p>منصة ألعاب المضيفين واللاعبين</p>
-          </div>
+    <div id="passwordPage" class="password-page">
+        <div class="password-logo">𖤍</div>
+        <h1 class="password-title">مرحباً بك في 𖤍|𝐑𝐞𝐝𝐒𝐰𝐨𝐫𝐝</h1>
+        <div class="password-form">
+            <h2><i class="fas fa-lock"></i> أدخل كلمة المرور</h2>
+            <p>يجب إدخال كلمة المرور الصحيحة للوصول إلى محتوى الموقع</p>
+            <div class="password-input-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="sitePasswordInput" placeholder="أدخل كلمة المرور" onkeyup="togglePasswordSubmitButton()" oninput="togglePasswordSubmitButton()">
+            </div>
+            <button class="password-submit" id="passwordSubmitBtn" onclick="checkSitePassword()" disabled>
+                <i class="fas fa-unlock"></i> دخول
+            </button>
+            <p class="password-error" id="sitePasswordError">
+                <i class="fas fa-exclamation-circle"></i> كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى
+            </p>
         </div>
-        
-        <div class="menu-toggle" id="menuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </header>
-    
-    <!-- القائمة الجانبية -->
-    <div class="nav-menu" id="navMenu">
-      <div class="close-menu" id="closeMenu">
-        <i class="fas fa-times"></i>
-      </div>
-      
-      <nav>
-        <a href="#" class="nav-item active"><i class="fas fa-home"></i> الرئيسية</a>
-        <a href="#" class="nav-item"><i class="fas fa-gamepad"></i> الألعاب</a>
-        <a href="#" class="nav-item"><i class="fas fa-crown"></i> الألعاب المميزة</a>
-        <a href="#" class="nav-item"><i class="fas fa-info-circle"></i> عنا</a>
-        <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="nav-item"><i class="fas fa-headset"></i> اتصل بنا</a>
-      </nav>
-      
-      <div class="user-actions">
-        <div class="social-icons">
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-twitter"></i></a>
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
     </div>
     
-    <div class="main-container">
-      <aside class="sidebar">
-        <div class="sidebar-section">
-          <h3 class="sidebar-title"><i class="fas fa-layer-group"></i> التصنيفات</h3>
-          <ul class="category-list">
-            <li class="category-item active" data-category="all">
-              <i class="fas fa-gamepad"></i> جميع الألعاب
-            </li>
-            <li class="category-item" data-category="strategy">
-              <i class="fas fa-chess"></i> ألعاب استراتيجية
-            </li>
-            <li class="category-item" data-category="puzzle">
-              <i class="fas fa-puzzle-piece"></i> ألعاب ذكاء
-            </li>
-            <li class="category-item" data-category="adventure">
-              <i class="fas fa-map"></i> ألعاب مغامرة
-            </li>
-            <li class="category-item" data-category="action">
-              <i class="fas fa-fist-raised"></i> ألعاب حركة
-            </li>
-            <li class="category-item" data-category="sports">
-              <i class="fas fa-basketball-ball"></i> ألعاب رياضية
-            </li>
-          </ul>
-        </div>
-        
-        <div class="sidebar-section">
-          <h3 class="sidebar-title"><i class="fas fa-link"></i> روابط سريعة</h3>
-          <ul class="quick-links">
-            <li><a href="#" class="quick-link"><i class="fas fa-fire"></i> الألعاب الشعبية</a></li>
-            <li><a href="#" class="quick-link"><i class="fas fa-star"></i> الألعاب المميزة</a></li>
-            <li><a href="#" class="quick-link"><i class="fas fa-calendar-alt"></i> الألعاب الجديدة</a></li>
-            <li><a href="#" class="quick-link"><i class="fas fa-trophy"></i> المسابقات</a></li>
-            <li><a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-gift"></i> العروض الخاصة</a></li>
-          </ul>
-        </div>
-        
-        <div class="sidebar-section">
-          <h3 class="sidebar-title"><i class="fas fa-chart-line"></i> إحصائيات</h3>
-          <div class="stats-box">
-            <div class="stat-item">
-              <span>عدد الألعاب</span>
-              <span id="gamesCount">0</span>
-            </div>
-            <div class="stat-item">
-              <span>عدد التصنيفات</span>
-              <span>24</span>
-            </div>
-            <div class="stat-item">
-              <span>عدد المستخدمين</span>
-              <span>1,248</span>
-            </div>
-            <div class="stat-item">
-              <span>مرات تشغيل الألعاب</span>
-              <span>125,847</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sidebar-section">
-          <h3 class="sidebar-title"><i class="fas fa-headset"></i> الدعم الفني</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">نحن هنا لمساعدتك في أي استفسار أو مشكلة تواجهك</p>
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-envelope"></i> اتصل بنا</a>
-          <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a>
-        </div>
-      </aside>
-      
-      <main class="main-content">
-        <section class="banner-section">
-          <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="RedSword Games" class="banner2-img">
-          <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="RedSword Banner" class="banner-img">
-        </section>
-        
-        <section class="welcome-section">
-          <h2>مرحباً بك في منصة RedSword للألعاب</h2>
-          <h2>"تنويه الموقع لازال تحت التطوير"</h2>
-          <p>استمتع بأفضل تجربة ألعاب عربية مع مجموعة متنوعة من الألعاب المناسبة لجميع الأعمار. اكتشف ألعاباً جديدة يومياً وتحدى أصدقاءك في جو من المتعة والتسلية.</p>
-        </section>
-        
-        <section class="search-section">
-          <div id="searchBox">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
-          </div>
-          
-          <div class="filters">
-            <button class="filter-btn active" data-category="all">
-              <i class="fas fa-gamepad"></i> الكل
-            </button>
-            <button class="filter-btn" data-category="strategy">
-              <i class="fas fa-chess"></i> استراتيجية
-            </button>
-            <button class="filter-btn" data-category="puzzle">
-              <i class="fas fa-puzzle-piece"></i> ألغاز
-            </button>
-            <button class="filter-btn" data-category="adventure">
-              <i class="fas fa-map"></i> مغامرة
-            </button>
-          </div>
-        </section>
-        
-        <h2 class="section-title"><i class="fas fa-dice"></i> أحدث الألعاب</h2>
-        <div class="game-grid" id="gameGrid">
-          <!-- سيتم تحميل الألعاب تلقائياً من Firebase -->
-        </div>
-        
-        <section class="about-section">
-          <h2 class="section-title"><i class="fas fa-info-circle"></i> عن RedSword</h2>
-          <div class="about-content">
-            <div class="about-text">
-              <h3>منصة الألعاب العربية الرائدة</h3>
-              <p>RedSword هي منصة ألعاب عربية تهدف إلى تقديم أفضل تجربة ألعاب للمستخدمين العرب بمحتوى متنوع يلبي جميع الأذواق والفئات العمرية.</p>
-              <p>نحن نعمل بشكل مستمر على تطوير المنصة وإضافة ألعاب جديدة لتضمن لك تجربة ممتعة دائماً.</p>
-              
-              <div class="about-features">
-                <div class="feature">
-                  <i class="fas fa-check-circle"></i>
-                  <span>جودة عالية</span>
+    <div id="siteContent" class="site-content">
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">𖤍</div>
+                    <div class="logo-text">
+                        <h1>𖤍|𝐑𝐞𝐝𝐒𝐰𝐨𝐫𝐝</h1>
+                        <p>منصة ألعاب المضيفين واللاعبين</p>
+                    </div>
                 </div>
-                <div class="feature">
-                  <i class="fas fa-check-circle"></i>
-                  <span>مجاني بالكامل</span>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="feature">
-                  <i class="fas fa-check-circle"></i>
-                  <span>يدعم جميع الأجهزة</span>
+            </div>
+        </header>
+        
+        <!-- القائمة الجانبية -->
+        <div class="nav-menu" id="navMenu">
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#" class="nav-item"><i class="fas fa-gamepad"></i> الألعاب</a>
+                <a href="#" class="nav-item"><i class="fas fa-crown"></i> الألعاب المميزة</a>
+                <a href="#" class="nav-item"><i class="fas fa-info-circle"></i> عنا</a>
+                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="nav-item"><i class="fas fa-headset"></i> اتصل بنا</a>
+            </nav>
+            <div class="user-actions">
+                <div class="social-icons">
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-youtube"></i></a>
                 </div>
-                <div class="feature">
-                  <i class="fas fa-check-circle"></i>
-                  <span>تحديثات مستمرة</span>
+            </div>
+        </div>
+        
+        <div class="main-container">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-layer-group"></i> التصنيفات</h3>
+                    <ul class="category-list">
+                        <li class="category-item active" data-category="all">
+                            <i class="fas fa-gamepad"></i> جميع الألعاب
+                        </li>
+                        <li class="category-item" data-category="strategy">
+                            <i class="fas fa-chess"></i> ألعاب استراتيجية
+                        </li>
+                        <li class="category-item" data-category="puzzle">
+                            <i class="fas fa-puzzle-piece"></i> ألعاب ذكاء
+                        </li>
+                        <li class="category-item" data-category="adventure">
+                            <i class="fas fa-map"></i> ألعاب مغامرة
+                        </li>
+                        <li class="category-item" data-category="action">
+                            <i class="fas fa-fist-raised"></i> ألعاب حركة
+                        </li>
+                        <li class="category-item" data-category="sports">
+                            <i class="fas fa-basketball-ball"></i> ألعاب رياضية
+                        </li>
+                    </ul>
                 </div>
-              </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-link"></i> روابط سريعة</h3>
+                    <ul class="quick-links">
+                        <li><a href="#" class="quick-link"><i class="fas fa-fire"></i> الألعاب الشعبية</a></li>
+                        <li><a href="#" class="quick-link"><i class="fas fa-star"></i> الألعاب المميزة</a></li>
+                        <li><a href="#" class="quick-link"><i class="fas fa-calendar-alt"></i> الألعاب الجديدة</a></li>
+                        <li><a href="#" class="quick-link"><i class="fas fa-trophy"></i> المسابقات</a></li>
+                        <li><a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-gift"></i> العروض الخاصة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-chart-line"></i> إحصائيات</h3>
+                    <div class="stats-box">
+                        <div class="stat-item">
+                            <span>عدد الألعاب</span>
+                            <span id="gamesCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>عدد التصنيفات</span>
+                            <span>24</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>عدد المستخدمين</span>
+                            <span>1,248</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>مرات تشغيل الألعاب</span>
+                            <span>125,847</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title"><i class="fas fa-headset"></i> الدعم الفني</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">نحن هنا لمساعدتك في أي استفسار أو مشكلة تواجهك</p>
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-envelope"></i> اتصل بنا</a>
+                    <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="quick-link"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a>
+                </div>
+            </aside>
+            
+            <main class="main-content">
+                <section class="banner-section">
+                    <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/logo5.png" alt="RedSword Games" class="banner2-img">
+                    <img src="https://e-redsword.github.io/REDSWORD_GAME_HOME/RED2.png" alt="RedSword Banner" class="banner-img">
+                </section>
+                
+                <section class="welcome-section">
+                    <h2>مرحباً بك في منصة RedSword للألعاب</h2>
+                    <h2>"تنويه الموقع لازال تحت التطوير"</h2>
+                    <p>استمتع بأفضل تجربة ألعاب عربية مع مجموعة متنوعة من الألعاب المناسبة لجميع الأعمار. اكتشف ألعاباً جديدة يومياً وتحدى أصدقاءك في جو من المتعة والتسلية.</p>
+                </section>
+                
+                <section class="search-section">
+                    <div id="searchBox">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeyup="filterGames()">
+                    </div>
+                    <div class="filters">
+                        <button class="filter-btn active" data-category="all">
+                            <i class="fas fa-gamepad"></i> الكل
+                        </button>
+                        <button class="filter-btn" data-category="strategy">
+                            <i class="fas fa-chess"></i> استراتيجية
+                        </button>
+                        <button class="filter-btn" data-category="puzzle">
+                            <i class="fas fa-puzzle-piece"></i> ألغاز
+                        </button>
+                        <button class="filter-btn" data-category="adventure">
+                            <i class="fas fa-map"></i> مغامرة
+                        </button>
+                    </div>
+                </section>
+                
+                <h2 class="section-title"><i class="fas fa-dice"></i> أحدث الألعاب</h2>
+                <div class="game-grid" id="gameGrid">
+                    <!-- سيتم تحميل الألعاب تلقائياً من Firebase -->
+                </div>
+                
+                <section class="about-section">
+                    <h2 class="section-title"><i class="fas fa-info-circle"></i> عن RedSword</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>منصة الألعاب العربية الرائدة</h3>
+                            <p>RedSword هي منصة ألعاب عربية تهدف إلى تقديم أفضل تجربة ألعاب للمستخدمين العرب بمحتوى متنوع يلبي جميع الأذواق والفئات العمرية.</p>
+                            <p>نحن نعمل بشكل مستمر على تطوير المنصة وإضافة ألعاب جديدة لتضمن لك تجربة ممتعة دائماً.</p>
+                            <div class="about-features">
+                                <div class="feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>جودة عالية</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>مجاني بالكامل</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>يدعم جميع الأجهزة</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>تحديثات مستمرة</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-text">
+                            <h3>لماذا تختار RedSword</h3>
+                            <p>نحن نقدم مجموعة واسعة من الألعاب التي تناسب جميع الأعمار والأذواق، مع واجهة مستخدم سهلة الاستخدام وتصميم جذاب.</p>
+                            <p>منصة RedSword توفر لك تجربة ألعاب سلسة وخالية من الإعلانات المزعجة، مع دعم فني متاح على مدار الساعة.</p>
+                            <div class="about-features">
+                                <div class="feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>مجتمع لاعبين نشط</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>مسابقات وجوائز</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>متوافق مع الجوال</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>آمن وسهل الاستخدام</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="contact-section">
+                    <h2 class="section-title"><i class="fas fa-envelope"></i> اتصل بنا</h2>
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3>معلومات التواصل</h3>
+                            <ul class="contact-details">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>كوكب الارض , مجرة درب التبانة 😂</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@redsword.com</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <span>+1111111111</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span>خدمة العملاء متاحة 1/1</span>
+                                </li>
+                            </ul>
+                            <div class="social-icons" style="margin-top: 30px;">
+                                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>أرسل رسالة</h3>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">الاسم بالكامل</label>
+                                    <input type="text" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">البريد الإلكتروني</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">الرسالة</label>
+                                    <textarea id="message" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <footer>
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>عن RedSword</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">منصة ألعاب عربية تهدف إلى تقديم أفضل تجربة ألعاب للمستخدمين العرب بمحتوى متنوع يلبي جميع الأذواق والفئات العمرية.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>الأقسام الرئيسية</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-angle-left"></i> الألعاب</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> المسابقات</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> المدونة</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> المتجر</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> عن الموقع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>المساعدة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> الدعم الفني</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> شروط الاستخدام</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> إرشادات الأمان</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>وسائل التواصل</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-angle-left"></i> فيسبوك</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> تويتر</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> إنستغرام</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> يوتيوب</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> ديسكورد</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 جميع الحقوق محفوظة لموقع RedSword | منصة الألعاب العربية</p>
+                <p>تم تطوير الموقع بأحدث التقنيات لتقديم أفضل تجربة للمستخدمين</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- لوحة الإدارة -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h1><i class="fas fa-cogs"></i> لوحة إدارة RedSword</h1>
+            <button class="admin-close-btn" onclick="closeAdminPanel()"><i class="fas fa-times"></i> إغلاق</button>
+        </div>
+        
+        <div class="admin-container">
+            <!-- قسم إدارة الألعاب -->
+            <div class="admin-section">
+                <h2><i class="fas fa-gamepad"></i> إدارة الألعاب</h2>
+                
+                <!-- نموذج إضافة لعبة جديدة -->
+                <h3 style="color: var(--secondary); margin-bottom: 20px;">إضافة لعبة جديدة</h3>
+                <form id="addGameForm" class="admin-form">
+                    <div class="form-group">
+                        <label for="gameName">اسم اللعبة:</label>
+                        <input type="text" id="gameName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameCategory">تصنيف اللعبة:</label>
+                        <select id="gameCategory" required>
+                            <option value="">اختر التصنيف</option>
+                            <option value="strategy">ألعاب استراتيجية</option>
+                            <option value="puzzle">ألعاب ذكاء</option>
+                            <option value="adventure">ألعاب مغامرة</option>
+                            <option value="action">ألعاب حركة</option>
+                            <option value="sports">ألعاب رياضية</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group form-full-width">
+                        <label for="gameDescription">وصف اللعبة:</label>
+                        <textarea id="gameDescription" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameImage">رابط صورة الغلاف:</label>
+                        <input type="url" id="gameImage" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameLink">رابط اللعبة:</label>
+                        <input type="url" id="gameLink" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameBadge">شارة اللعبة (اختياري):</label>
+                        <select id="gameBadge">
+                            <option value="">بدون شارة</option>
+                            <option value="جديد">جديد</option>
+                            <option value="شائع">شائع</option>
+                            <option value="مميز">مميز</option>
+                            <option value="حصري">حصري</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameRating">التقييم (اختياري):</label>
+                        <input type="text" id="gameRating" placeholder="مثال: 4.7">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gamePlayers">عدد اللاعبين (اختياري):</label>
+                        <input type="text" id="gamePlayers" placeholder="مثال: 2-6 لاعبين">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameTime">متوسط الوقت (اختياري):</label>
+                        <input type="text" id="gameTime" placeholder="مثال: 20 دقيقة">
+                    </div>
+                    
+                    <button type="submit" class="admin-submit-btn"><i class="fas fa-plus"></i> إضافة اللعبة</button>
+                </form>
+                
+                <!-- قائمة الألعاب الحالية -->
+                <div class="games-list">
+                    <h3 style="color: var(--secondary); margin-top: 40px; margin-bottom: 20px;">الألعاب الحالية</h3>
+                    <div id="adminGamesList">
+                        <!-- سيتم ملؤها بالبيانات من Firebase -->
+                    </div>
+                </div>
             </div>
             
-            <div class="about-text">
-              <h3>لماذا تختار RedSword</h3>
-              <p>نحن نقدم مجموعة واسعة من الألعاب التي تناسب جميع الأعمار والأذواق، مع واجهة مستخدم سهلة الاستخدام وتصميم جذاب.</p>
-              <p>منصة RedSword توفر لك تجربة ألعاب سلسة وخالية من الإعلانات المزعجة، مع دعم فني متاح على مدار الساعة.</p>
-              
-              <div class="about-features">
-                <div class="feature">
-                  <i class="fas fa-users"></i>
-                  <span>مجتمع لاعبين نشط</span>
+            <!-- قسم إدارة كلمات المرور -->
+            <div class="admin-section">
+                <h2><i class="fas fa-key"></i> إدارة كلمات المرور</h2>
+                <div class="password-management">
+                    <div>
+                        <h3 style="color: var(--secondary); margin-bottom: 20px;">تغيير كلمة مرور الموقع</h3>
+                        <div class="form-group">
+                            <label for="currentSitePassword">كلمة المرور الحالية:</label>
+                            <input type="password" id="currentSitePassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="newSitePassword">كلمة المرور الجديدة:</label>
+                            <input type="password" id="newSitePassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmSitePassword">تأكيد كلمة المرور:</label>
+                            <input type="password" id="confirmSitePassword">
+                        </div>
+                        <button class="admin-submit-btn" onclick="updateSitePassword()">تحديث كلمة المرور</button>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--secondary); margin-bottom: 20px;">تغيير كلمة مرور الإدارة</h3>
+                        <div class="form-group">
+                            <label for="currentAdminPassword">كلمة المرور الحالية:</label>
+                            <input type="password" id="currentAdminPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="newAdminPassword">كلمة المرور الجديدة:</label>
+                            <input type="password" id="newAdminPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmAdminPassword">تأكيد كلمة المرور:</label>
+                            <input type="password" id="confirmAdminPassword">
+                        </div>
+                        <button class="admin-submit-btn" onclick="updateAdminPassword()">تحديث كلمة المرور</button>
+                    </div>
                 </div>
-                <div class="feature">
-                  <i class="fas fa-trophy"></i>
-                  <span>مسابقات وجوائز</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-mobile-alt"></i>
-                  <span>متوافق مع الجوال</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-shield-alt"></i>
-                  <span>آمن وسهل الاستخدام</span>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
-        
-        <section class="contact-section">
-          <h2 class="section-title"><i class="fas fa-envelope"></i> اتصل بنا</h2>
-          <div class="contact-container">
-            <div class="contact-info">
-              <h3>معلومات التواصل</h3>
-              <ul class="contact-details">
-                <li>
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>كوكب الارض , مجرة درب التبانة 😂</span>
-                </li>
-                <li>
-                  <i class="fas fa-envelope"></i>
-                  <span>info@redsword.com</span>
-                </li>
-                <li>
-                  <i class="fas fa-phone"></i>
-                  <span>+1111111111</span>
-                </li>
-                <li>
-                  <i class="fas fa-clock"></i>
-                  <span>خدمة العملاء متاحة 1/1</span>
-                </li>
-              </ul>
-              
-              <div class="social-icons" style="margin-top: 30px;">
-                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://starmaker.onelink.me/v4ei/3n72423g" class="social-icon"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
-              </div>
-            </div>
-            
-            <div class="contact-form">
-              <h3>أرسل رسالة</h3>
-              <form id="contactForm">
-                <div class="form-group">
-                  <label for="name">الاسم بالكامل</label>
-                  <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">البريد الإلكتروني</label>
-                  <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="message">الرسالة</label>
-                  <textarea id="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">إرسال الرسالة</button>
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
     </div>
     
-    <footer>
-      <div class="footer-container">
-        <div class="footer-col">
-          <h4>عن RedSword</h4>
-          <p style="color: var(--text-secondary); line-height: 1.7;">منصة ألعاب عربية تهدف إلى تقديم أفضل تجربة ألعاب للمستخدمين العرب بمحتوى متنوع يلبي جميع الأذواق والفئات العمرية.</p>
+    <button id="secretBtn" class="secret-btn">
+        <i class="fas fa-lock"></i>
+    </button>
+    
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2><i class="fas fa-key"></i> كلمة مرور الإدارة</h2>
+            <p>أدخل كلمة مرور المسؤول للوصول إلى لوحة الإدارة</p>
+            <input type="password" id="adminPasswordInput" class="password-input" placeholder="أدخل كلمة مرور الإدارة">
+            <div>
+                <button class="modal-btn submit-btn" onclick="checkAdminPassword()">دخول</button>
+                <button class="modal-btn cancel-btn" onclick="closePasswordModal()">إلغاء</button>
+            </div>
         </div>
-        
-        <div class="footer-col">
-          <h4>الأقسام الرئيسية</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-angle-left"></i> الألعاب</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> المسابقات</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> المدونة</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> المتجر</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> عن الموقع</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h4>المساعدة</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> الدعم الفني</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> شروط الاستخدام</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> إرشادات الأمان</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h4>وسائل التواصل</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-angle-left"></i> فيسبوك</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> تويتر</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> إنستغرام</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> يوتيوب</a></li>
-            <li><a href="#"><i class="fas fa-angle-left"></i> ديسكورد</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>© 2025 جميع الحقوق محفوظة لموقع RedSword | منصة الألعاب العربية</p>
-        <p>تم تطوير الموقع بأحدث التقنيات لتقديم أفضل تجربة للمستخدمين</p>
-      </div>
-    </footer>
-  </div>
-  
-  <!-- لوحة الإدارة -->
-  <div id="adminPanel" class="admin-panel">
-    <div class="admin-header">
-      <h1><i class="fas fa-cogs"></i> لوحة إدارة RedSword</h1>
-      <button class="admin-close-btn" onclick="closeAdminPanel()"><i class="fas fa-times"></i> إغلاق</button>
     </div>
-    
-    <div class="admin-container">
-      <!-- قسم إدارة الألعاب -->
-      <div class="admin-section">
-        <h2><i class="fas fa-gamepad"></i> إدارة الألعاب</h2>
-        
-        <!-- نموذج إضافة لعبة جديدة -->
-        <h3 style="color: var(--secondary); margin-bottom: 20px;">إضافة لعبة جديدة</h3>
-        <form id="addGameForm" class="admin-form">
-          <div class="form-group">
-            <label for="gameName">اسم اللعبة:</label>
-            <input type="text" id="gameName" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="gameCategory">تصنيف اللعبة:</label>
-            <select id="gameCategory" required>
-              <option value="">اختر التصنيف</option>
-              <option value="strategy">ألعاب استراتيجية</option>
-              <option value="puzzle">ألعاب ذكاء</option>
-              <option value="adventure">ألعاب مغامرة</option>
-              <option value="action">ألعاب حركة</option>
-              <option value="sports">ألعاب رياضية</option>
-              <option value="other">أخرى</option>
-            </select>
-          </div>
-          
-          <div class="form-group form-full-width">
-            <label for="gameDescription">وصف اللعبة:</label>
-            <textarea id="gameDescription" required></textarea>
-          </div>
-          
-          <div class="form-group">
-            <label for="gameImage">رابط صورة الغلاف:</label>
-            <input type="url" id="gameImage" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="gameLink">رابط اللعبة:</label>
-            <input type="url" id="gameLink" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="gameBadge">شارة اللعبة (اختياري):</label>
-            <select id="gameBadge">
-              <option value="">بدون شارة</option>
-              <option value="جديد">جديد</option>
-              <option value="شائع">شائع</option>
-              <option value="مميز">مميز</option>
-              <option value="حصري">حصري</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="gameRating">التقييم (اختياري):</label>
-            <input type="text" id="gameRating" placeholder="مثال: 4.7">
-          </div>
-          
-          <div class="form-group">
-            <label for="gamePlayers">عدد اللاعبين (اختياري):</label>
-            <input type="text" id="gamePlayers" placeholder="مثال: 2-6 لاعبين">
-          </div>
-          
-          <div class="form-group">
-            <label for="gameTime">متوسط الوقت (اختياري):</label>
-            <input type="text" id="gameTime" placeholder="مثال: 20 دقيقة">
-          </div>
-          
-          <button type="submit" class="admin-submit-btn"><i class="fas fa-plus"></i> إضافة اللعبة</button>
-        </form>
-        
-        <!-- قائمة الألعاب الحالية -->
-        <div class="games-list">
-          <h3 style="color: var(--secondary); margin-top: 40px; margin-bottom: 20px;">الألعاب الحالية</h3>
-          <div id="adminGamesList">
-            <!-- سيتم ملؤها بالبيانات من Firebase -->
-          </div>
-        </div>
-      </div>
-      
-      <!-- قسم إدارة كلمات المرور -->
-      <div class="admin-section">
-        <h2><i class="fas fa-key"></i> إدارة كلمات المرور</h2>
-        
-        <div class="password-management">
-          <div>
-            <h3 style="color: var(--secondary); margin-bottom: 20px;">تغيير كلمة مرور الموقع</h3>
-            <div class="form-group">
-              <label for="currentSitePassword">كلمة المرور الحالية:</label>
-              <input type="password" id="currentSitePassword">
-            </div>
-            <div class="form-group">
-              <label for="newSitePassword">كلمة المرور الجديدة:</label>
-              <input type="password" id="newSitePassword">
-            </div>
-            <div class="form-group">
-              <label for="confirmSitePassword">تأكيد كلمة المرور:</label>
-              <input type="password" id="confirmSitePassword">
-            </div>
-            <button class="admin-submit-btn" onclick="updateSitePassword()">تحديث كلمة المرور</button>
-          </div>
-          
-          <div>
-            <h3 style="color: var(--secondary); margin-bottom: 20px;">تغيير كلمة مرور الإدارة</h3>
-            <div class="form-group">
-              <label for="currentAdminPassword">كلمة المرور الحالية:</label>
-              <input type="password" id="currentAdminPassword">
-            </div>
-            <div class="form-group">
-              <label for="newAdminPassword">كلمة المرور الجديدة:</label>
-              <input type="password" id="newAdminPassword">
-            </div>
-            <div class="form-group">
-              <label for="confirmAdminPassword">تأكيد كلمة المرور:</label>
-              <input type="password" id="confirmAdminPassword">
-            </div>
-            <button class="admin-submit-btn" onclick="updateAdminPassword()">تحديث كلمة المرور</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <button id="secretBtn" class="secret-btn">
-    <i class="fas fa-lock"></i>
-  </button>
-  
-  <div class="password-modal" id="passwordModal">
-    <div class="password-box">
-      <h2><i class="fas fa-key"></i> كلمة مرور الإدارة</h2>
-      <p>أدخل كلمة مرور المسؤول للوصول إلى لوحة الإدارة</p>
-      <input type="password" id="adminPasswordInput" class="password-input" placeholder="أدخل كلمة مرور الإدارة">
-      <div>
-        <button class="modal-btn submit-btn" onclick="checkAdminPassword()">دخول</button>
-        <button class="modal-btn cancel-btn" onclick="closePasswordModal()">إلغاء</button>
-      </div>
-    </div>
-  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-  <script>
-    // تهيئة Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyCqCU1PtELEYfmM_SlMIZo9oNupHb04h1g",
-      authDomain: "redsword-game.firebaseapp.com",
-      databaseURL: "https://redsword-game-default-rtdb.firebaseio.com",
-      projectId: "redsword-game",
-      storageBucket: "redsword-game.firebasestorage.app",
-      messagingSenderId: "726024757334",
-      appId: "1:726024757334:web:0df237ab1c3c36f13a5bf7",
-      measurementId: "G-VD4M9WVSCX"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-    const passwordsRef = database.ref('passwords');
-    const gamesRef = database.ref('games');
-    
-    // متغيرات عامة
-    let SITE_PASSWORD_FIREBASE = "";
-    let ADMIN_PASSWORD_FIREBASE = "";
-    let IS_ADMIN_LOGGED_IN = false;
-    let allGamesData = {};
-
-    // عناصر DOM
-    const passwordPage = document.getElementById('passwordPage');
-    const siteContent = document.getElementById('siteContent');
-    const sitePasswordInput = document.getElementById('sitePasswordInput');
-    const sitePasswordError = document.getElementById('sitePasswordError');
-    const secretBtn = document.getElementById('secretBtn');
-    const passwordModal = document.getElementById('passwordModal');
-    const adminPasswordInput = document.getElementById('adminPasswordInput');
-    const adminPanel = document.getElementById('adminPanel');
-    const addGameForm = document.getElementById('addGameForm');
-    const adminGamesList = document.getElementById('adminGamesList');
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-    // إدارة القائمة الجانبية
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.add('active');
-    });
-    
-    closeMenu.addEventListener('click', function() {
-      navMenu.classList.remove('active');
-    });
-    
-    // إغلاق القائمة بالنقر خارجها
-    document.addEventListener('click', function(event) {
-      if (navMenu.classList.contains('active') && 
-          !navMenu.contains(event.target) && 
-          !menuToggle.contains(event.target)) {
-        navMenu.classList.remove('active');
-      }
-    });
-
-    // تحميل كلمات المرور من Firebase
-    passwordsRef.on('value', (snapshot) => {
-      const passwords = snapshot.val();
-      if (passwords) {
-        SITE_PASSWORD_FIREBASE = passwords.sitePassword || "";
-        ADMIN_PASSWORD_FIREBASE = passwords.adminPassword || "";
-      } else {
-        console.warn("No passwords found in Firebase 'passwords' node. Setting defaults.");
-        // تعيين كلمات مرور افتراضية إذا لم تكن موجودة
-        passwordsRef.set({
-          sitePassword: "123",
-          adminPassword: "admin"
-        }).then(() => {
-          SITE_PASSWORD_FIREBASE = "123";
-          ADMIN_PASSWORD_FIREBASE = "admin";
-        }).catch(error => {
-          console.error("Error setting default passwords:", error);
-        });
-      }
-    }, (errorObject) => {
-      console.error("The read failed: " + errorObject.code);
-      sitePasswordError.textContent = `خطأ في تحميل البيانات: ${errorObject.code}. يرجى التحقق من اتصال Firebase.`;
-      sitePasswordError.style.display = 'block';
-    });
-    
-    // التحقق من كلمة مرور الموقع
-    function checkSitePassword() {
-      if (sitePasswordInput.value === SITE_PASSWORD_FIREBASE) {
-        siteContent.style.display = 'block';
-        passwordPage.style.display = 'none';
-        sitePasswordError.style.display = 'none';
-        loadGamesFromFirebase();
-      } else {
-        // توجيه المستخدم إلى صفحة الأسئلة عند إدخال كلمة مرور خاطئة
-        window.location.href = "https://e-redsword.github.io/maintenance/";
-      }
-    }
-    
-    // السماح بالدخول بالضغط على Enter
-    sitePasswordInput.addEventListener('keyup', function(event) {
-      if (event.key === 'Enter') {
-        checkSitePassword();
-      }
-    });
-
-    // فتح نافذة كلمة مرور الإدارة
-    secretBtn.addEventListener('click', function() {
-      passwordModal.classList.add('visible');
-      adminPasswordInput.focus();
-    });
-    
-    // إغلاق نافذة كلمة مرور الإدارة
-    function closePasswordModal() {
-      passwordModal.classList.remove('visible');
-      adminPasswordInput.value = '';
-    }
-    
-    // التحقق من كلمة مرور الإدارة
-    function checkAdminPassword() {
-      if (adminPasswordInput.value === ADMIN_PASSWORD_FIREBASE) {
-        IS_ADMIN_LOGGED_IN = true;
-        adminPanel.classList.add('visible');
-        closePasswordModal();
-        loadAdminGamesList();
-      } else {
-        alert('كلمة المرور غير صحيحة! يرجى المحاولة مرة أخرى.');
-        adminPasswordInput.value = '';
-        adminPasswordInput.focus();
-      }
-    }
-    
-    // إغلاق لوحة الإدارة
-    function closeAdminPanel() {
-      adminPanel.classList.remove('visible');
-      IS_ADMIN_LOGGED_IN = false;
-    }
-
-    // تحميل الألعاب من Firebase للصفحة الرئيسية
-    function loadGamesFromFirebase() {
-        gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
-            const gameGrid = document.getElementById('gameGrid');
-            gameGrid.innerHTML = '';
-            const gamesData = snapshot.val();
-            allGamesData = {};
-
-            const gamesArray = [];
-
-            if (gamesData) {
-                for (let key in gamesData) {
-                    allGamesData[key] = gamesData[key];
-                    gamesArray.push({ id: key, ...gamesData[key] });
-                }
-                gamesArray.sort((a, b) => b.timestamp - a.timestamp);
-            }
-
-            if (gamesArray.length === 0) {
-                const noGamesMessage = document.createElement('div');
-                noGamesMessage.className = 'no-results';
-                noGamesMessage.innerHTML = `<i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>لا توجد ألعاب</h3><p>لم يتم إضافة أي ألعاب بعد!</p>`;
-                gameGrid.appendChild(noGamesMessage);
-            } else {
-                gamesArray.forEach(game => {
-                    addGameToPage(game);
-                });
-            }
-            filterGames();
-            updateGamesCount();
-        }, (errorObject) => {
-            console.error("The read failed: " + errorObject.code);
-            const gameGrid = document.getElementById('gameGrid');
-            gameGrid.innerHTML = `<div class="no-results"><i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>خطأ في التحميل</h3><p>حدث خطأ أثناء تحميل الألعاب: ${errorObject.message}.</p><p>يرجى التحقق من اتصال Firebase والمحاولة مرة أخرى.</p></div>`;
-        });
-    }
-
-    // إضافة لعبة إلى الصفحة الرئيسية
-    function addGameToPage(game) {
-      const gameGrid = document.getElementById('gameGrid');
-      const gameCard = document.createElement('div');
-      gameCard.className = 'game-card';
-      gameCard.setAttribute('data-category', game.category);
-      gameCard.setAttribute('data-game-id', game.id);
-      gameCard.style.opacity = '1';
-      
-      const gameLinksHtml = `
-            <a href="${game.link}" target="_blank" class="play-btn">
-              <i class="fas fa-play"></i> تشغيل اللعبة
-            </a>
-      `;
-
-      gameCard.innerHTML = `
-        <div class="game-image">
-          <img src="${game.image}" alt="${game.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/260x260?text=Image+Not+Found';">
-          ${game.badge ? `<span class="game-badge">${game.badge}</span>` : ''}
-        </div>
-        <div class="game-content">
-          <h2>${game.name}</h2>
-          <p>${game.description}</p>
-          <div class="game-links">
-            ${gameLinksHtml}
-            ${IS_ADMIN_LOGGED_IN ? `
-                <button class="edit-btn" onclick="showEditGameForm('${game.id}')">
-                  <i class="fas fa-edit"></i> تعديل
-                </button>
-                <button class="delete-btn" onclick="deleteGame('${game.id}', '${game.name}')">
-                  <i class="fas fa-trash-alt"></i> حذف
-                </button>
-            ` : ''}
-          </div>
-          <div class="game-stats">
-            <div class="stat"><i class="fas fa-star"></i> ${game.rating || 'N/A'}</div>
-            <div class="stat"><i class="fas fa-user-friends"></i> ${game.players || 'N/A'}</div>
-            <div class="stat"><i class="fas fa-clock"></i> ${game.time || 'N/A'}</div>
-          </div>
-        </div>
-      `;
-      
-      gameGrid.appendChild(gameCard); 
-    }
-
-    // تحميل قائمة الألعاب للإدارة
-    function loadAdminGamesList() {
-      gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
-        adminGamesList.innerHTML = '';
-        const gamesData = snapshot.val();
-        
-        if (!gamesData || Object.keys(gamesData).length === 0) {
-          adminGamesList.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">لا توجد ألعاب مضافة حتى الآن</p>';
-          return;
-        }
-        
-        const gamesArray = [];
-        for (let key in gamesData) {
-          gamesArray.push({ id: key, ...gamesData[key] });
-        }
-        gamesArray.sort((a, b) => b.timestamp - a.timestamp);
-        
-        gamesArray.forEach(game => {
-          const gameItem = document.createElement('div');
-          gameItem.className = 'game-item';
-          gameItem.innerHTML = `
-            <div class="game-item-info">
-              <h3>${game.name}</h3>
-              <p>${game.category} | ${game.description.substring(0, 50)}...</p>
-            </div>
-            <div class="game-item-actions">
-              <button class="game-edit-btn" onclick="showEditGameForm('${game.id}')"><i class="fas fa-edit"></i> تعديل</button>
-              <button class="game-delete-btn" onclick="deleteGame('${game.id}', '${game.name}')"><i class="fas fa-trash-alt"></i> حذف</button>
-            </div>
-          `;
-          adminGamesList.appendChild(gameItem);
-        });
-      });
-    }
-
-    // إضافة لعبة جديدة
-    addGameForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const gameData = {
-        name: document.getElementById('gameName').value,
-        category: document.getElementById('gameCategory').value,
-        description: document.getElementById('gameDescription').value,
-        image: document.getElementById('gameImage').value,
-        link: document.getElementById('gameLink').value,
-        badge: document.getElementById('gameBadge').value,
-        rating: document.getElementById('gameRating').value,
-        players: document.getElementById('gamePlayers').value,
-        time: document.getElementById('gameTime').value,
-        timestamp: Date.now()
-      };
-      
-      gamesRef.push(gameData)
-        .then(() => {
-          alert('تمت إضافة اللعبة بنجاح!');
-          addGameForm.reset();
-          loadAdminGamesList();
-        })
-        .catch(error => {
-          console.error('Error adding game:', error);
-          alert('حدث خطأ أثناء إضافة اللعبة: ' + error.message);
-        });
-    });
-
-    // عرض نموذج تعديل اللعبة
-    function showEditGameForm(gameId) {
-      const game = allGamesData[gameId];
-      if (!game) return;
-      
-      // في الواقع، يجب إنشاء نموذج تعديل منفصل أو استخدام modal
-      // لكن لأغراض العرض، سنقوم بملئ النموذج الحالي
-      document.getElementById('gameName').value = game.name;
-      document.getElementById('gameCategory').value = game.category;
-      document.getElementById('gameDescription').value = game.description;
-      document.getElementById('gameImage').value = game.image;
-      document.getElementById('gameLink').value = game.link;
-      document.getElementById('gameBadge').value = game.badge || '';
-      document.getElementById('gameRating').value = game.rating || '';
-      document.getElementById('gamePlayers').value = game.players || '';
-      document.getElementById('gameTime').value = game.time || '';
-      
-      // تغيير نص زر الإضافة إلى "تحديث"
-      const submitBtn = addGameForm.querySelector('button[type="submit"]');
-      submitBtn.innerHTML = '<i class="fas fa-sync"></i> تحديث اللعبة';
-      
-      // تغيير سلوك النموذج للتحديث بدلاً من الإضافة
-      addGameForm.onsubmit = function(e) {
-        e.preventDefault();
-        
-        const updatedData = {
-          name: document.getElementById('gameName').value,
-          category: document.getElementById('gameCategory').value,
-          description: document.getElementById('gameDescription').value,
-          image: document.getElementById('gameImage').value,
-          link: document.getElementById('gameLink').value,
-          badge: document.getElementById('gameBadge').value,
-          rating: document.getElementById('gameRating').value,
-          players: document.getElementById('gamePlayers').value,
-          time: document.getElementById('gameTime').value,
-          timestamp: game.timestamp // الحفاظ على الطابع الزمني الأصلي
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script>
+        // تهيئة Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCqCU1PtELEYfmM_SlMIZo9oNupHb04h1g",
+            authDomain: "redsword-game.firebaseapp.com",
+            databaseURL: "https://redsword-game-default-rtdb.firebaseio.com",
+            projectId: "redsword-game",
+            storageBucket: "redsword-game.firebasestorage.app",
+            messagingSenderId: "726024757334",
+            appId: "1:726024757334:web:0df237ab1c3c36f13a5bf7",
+            measurementId: "G-VD4M9WVSCX"
         };
         
-        gamesRef.child(gameId).update(updatedData)
-          .then(() => {
-            alert('تم تحديث اللعبة بنجاح!');
-            addGameForm.reset();
-            submitBtn.innerHTML = '<i class="fas fa-plus"></i> إضافة اللعبة';
-            addGameForm.onsubmit = null; // إعادة تعيين معالج الأحداث
-            loadAdminGamesList();
-          })
-          .catch(error => {
-            console.error('Error updating game:', error);
-            alert('حدث خطأ أثناء تحديث اللعبة: ' + error.message);
-          });
-      };
-      
-      // التمرير إلى أعلى النموذج
-      addGameForm.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // حذف لعبة
-    function deleteGame(gameId, gameName) {
-      if (confirm(`هل أنت متأكد من أنك تريد حذف اللعبة "${gameName}"؟`)) {
-        gamesRef.child(gameId).remove()
-          .then(() => {
-            alert('تم حذف اللعبة بنجاح!');
-            loadAdminGamesList();
-          })
-          .catch(error => {
-            console.error('Error deleting game:', error);
-            alert('حدث خطأ أثناء حذف اللعبة: ' + error.message);
-          });
-      }
-    }
-
-    // تحديث كلمة مرور الموقع
-    function updateSitePassword() {
-      const currentPassword = document.getElementById('currentSitePassword').value;
-      const newPassword = document.getElementById('newSitePassword').value;
-      const confirmPassword = document.getElementById('confirmSitePassword').value;
-      
-      if (currentPassword !== SITE_PASSWORD_FIREBASE) {
-        alert('كلمة المرور الحالية غير صحيحة!');
-        return;
-      }
-      
-      if (newPassword !== confirmPassword) {
-        alert('كلمة المرور الجديدة غير متطابقة!');
-        return;
-      }
-      
-      passwordsRef.update({ sitePassword: newPassword })
-        .then(() => {
-          SITE_PASSWORD_FIREBASE = newPassword;
-          alert('تم تحديث كلمة مرور الموقع بنجاح!');
-          document.getElementById('currentSitePassword').value = '';
-          document.getElementById('newSitePassword').value = '';
-          document.getElementById('confirmSitePassword').value = '';
-        })
-        .catch(error => {
-          console.error('Error updating site password:', error);
-          alert('حدث خطأ أثناء تحديث كلمة المرور: ' + error.message);
-        });
-    }
-
-    // تحديث كلمة مرور الإدارة
-    function updateAdminPassword() {
-      const currentPassword = document.getElementById('currentAdminPassword').value;
-      const newPassword = document.getElementById('newAdminPassword').value;
-      const confirmPassword = document.getElementById('confirmAdminPassword').value;
-      
-      if (currentPassword !== ADMIN_PASSWORD_FIREBASE) {
-        alert('كلمة المرور الحالية غير صحيحة!');
-        return;
-      }
-      
-      if (newPassword !== confirmPassword) {
-        alert('كلمة المرور الجديدة غير متطابقة!');
-        return;
-      }
-      
-      passwordsRef.update({ adminPassword: newPassword })
-        .then(() => {
-          ADMIN_PASSWORD_FIREBASE = newPassword;
-          alert('تم تحديث كلمة مرور الإدارة بنجاح!');
-          document.getElementById('currentAdminPassword').value = '';
-          document.getElementById('newAdminPassword').value = '';
-          document.getElementById('confirmAdminPassword').value = '';
-        })
-        .catch(error => {
-          console.error('Error updating admin password:', error);
-          alert('حدث خطأ أثناء تحديث كلمة المرور: ' + error.message);
-        });
-    }
-
-    // تصفية الألعاب
-    function filterGames() {
-      const query = document.getElementById("searchInput").value.toLowerCase();
-      const cards = document.querySelectorAll(".game-card");
-      const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
-      
-      let visibleCount = 0;
-      
-      cards.forEach(card => {
-        const title = card.querySelector("h2").textContent.toLowerCase();
-        const description = card.querySelector("p").textContent.toLowerCase();
-        const category = card.getAttribute("data-category");
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const passwordsRef = database.ref('passwords');
+        const gamesRef = database.ref('games');
         
-        const matchesSearch = title.includes(query) || description.includes(query);
-        const matchesCategory = (activeCategory === 'all' || category === activeCategory);
-
-        if (matchesSearch && matchesCategory) {
-          card.style.display = "flex";
-          visibleCount++;
-        } else {
-          card.style.display = "none";
+        // متغيرات عامة
+        let SITE_PASSWORD_FIREBASE = "";
+        let ADMIN_PASSWORD_FIREBASE = "";
+        let IS_ADMIN_LOGGED_IN = false;
+        let allGamesData = {};
+        
+        // عناصر DOM
+        const passwordPage = document.getElementById('passwordPage');
+        const siteContent = document.getElementById('siteContent');
+        const sitePasswordInput = document.getElementById('sitePasswordInput');
+        const sitePasswordError = document.getElementById('sitePasswordError');
+        const passwordSubmitBtn = document.getElementById('passwordSubmitBtn');
+        const secretBtn = document.getElementById('secretBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const adminPanel = document.getElementById('adminPanel');
+        const addGameForm = document.getElementById('addGameForm');
+        const adminGamesList = document.getElementById('adminGamesList');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        // إدارة القائمة الجانبية
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+        });
+        
+        // إغلاق القائمة بالنقر خارجها
+        document.addEventListener('click', function(event) {
+            if (navMenu.classList.contains('active') && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // تحميل كلمات المرور من Firebase
+        passwordsRef.on('value', (snapshot) => {
+            const passwords = snapshot.val();
+            if (passwords) {
+                SITE_PASSWORD_FIREBASE = passwords.sitePassword || "";
+                ADMIN_PASSWORD_FIREBASE = passwords.adminPassword || "";
+            } else {
+                console.warn("No passwords found in Firebase 'passwords' node. Setting defaults.");
+                // تعيين كلمات مرور افتراضية إذا لم تكن موجودة
+                passwordsRef.set({ 
+                    sitePassword: "123", 
+                    adminPassword: "admin" 
+                }).then(() => {
+                    SITE_PASSWORD_FIREBASE = "123";
+                    ADMIN_PASSWORD_FIREBASE = "admin";
+                }).catch(error => {
+                    console.error("Error setting default passwords:", error);
+                });
+            }
+        }, (errorObject) => {
+            console.error("The read failed: " + errorObject.code);
+            sitePasswordError.textContent = `خطأ في تحميل البيانات: ${errorObject.code}. يرجى التحقق من اتصال Firebase.`;
+            sitePasswordError.style.display = 'block';
+        });
+        
+        // تفعيل/تعطيل زر الدخول بناءً على محتوى حقل كلمة المرور
+        function togglePasswordSubmitButton() {
+            if (sitePasswordInput.value.trim() !== '') {
+                passwordSubmitBtn.disabled = false;
+            } else {
+                passwordSubmitBtn.disabled = true;
+            }
         }
-      });
-      
-      const existingNoResults = document.getElementById("noResults");
-      if (existingNoResults) existingNoResults.remove();
-      
-      if (visibleCount === 0) {
-        const gameGrid = document.getElementById("gameGrid");
-        const noResults = document.createElement("div");
-        noResults.className = "no-results";
-        noResults.id = "noResults";
-        noResults.innerHTML = `
-          <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
-          <h3>لا توجد نتائج</h3>
-          <p>لم يتم العثور على ألعاب تطابق بحثك. حاول تغيير الكلمات.</p>
-        `;
-        gameGrid.appendChild(noResults);
-      }
-    }
-    
-    // إضافة معالجات الأحداث لأزرار التصفية
-    document.querySelectorAll('.filter-btn').forEach(button => {
-      button.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-          btn.classList.remove('active');
+        
+        // التحقق من كلمة مرور الموقع
+        function checkSitePassword() {
+            if (sitePasswordInput.value === SITE_PASSWORD_FIREBASE) {
+                siteContent.style.display = 'block';
+                passwordPage.style.display = 'none';
+                sitePasswordError.style.display = 'none';
+                loadGamesFromFirebase();
+            } else {
+                // توجيه المستخدم إلى صفحة الأسئلة عند إدخال كلمة مرور خاطئة
+                window.location.href = "https://e-redsword.github.io/maintenance/";
+            }
+        }
+        
+        // السماح بالدخول بالضغط على Enter
+        sitePasswordInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter' && !passwordSubmitBtn.disabled) {
+                checkSitePassword();
+            }
         });
         
-        this.classList.add('active');
-        filterGames();
-      });
-    });
-
-    // إضافة معالجات الأحداث لتصنيفات القائمة الجانبية
-    document.querySelectorAll('.category-item').forEach(item => {
-      item.addEventListener('click', function() {
-        document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
-        
-        const category = this.getAttribute('data-category');
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.getAttribute('data-category') === category) {
-            btn.classList.add('active');
-          } else if (category === 'all' && btn.getAttribute('data-category') === 'all') {
-            btn.classList.add('active');
-          }
+        // فتح نافذة كلمة مرور الإدارة
+        secretBtn.addEventListener('click', function() {
+            passwordModal.classList.add('visible');
+            adminPasswordInput.focus();
         });
         
-        filterGames();
-      });
-    });
-
-    // تحديث عدد الألعاب
-    function updateGamesCount() {
-      gamesRef.once('value').then(snapshot => {
-        const count = snapshot.numChildren();
-        document.getElementById('gamesCount').textContent = count;
-      });
-    }
-
-    // تهيئة عند تحميل الصفحة
-    document.addEventListener('DOMContentLoaded', function() {
-      if (sitePasswordInput) {
-        sitePasswordInput.focus();
-      }
-      
-      // إضافة أنيميشن الهزّ
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-          20%, 40%, 60%, 80% { transform: translateX(5px); }
+        // إغلاق نافذة كلمة مرور الإدارة
+        function closePasswordModal() {
+            passwordModal.classList.remove('visible');
+            adminPasswordInput.value = '';
         }
-        .shake {
-          animation: shake 0.5s;
+        
+        // التحقق من كلمة مرور الإدارة
+        function checkAdminPassword() {
+            if (adminPasswordInput.value === ADMIN_PASSWORD_FIREBASE) {
+                IS_ADMIN_LOGGED_IN = true;
+                adminPanel.classList.add('visible');
+                closePasswordModal();
+                loadAdminGamesList();
+            } else {
+                alert('كلمة المرور غير صحيحة! يرجى المحاولة مرة أخرى.');
+                adminPasswordInput.value = '';
+                adminPasswordInput.focus();
+            }
         }
-      `;
-      document.head.appendChild(style);
-    });
-  </script>
+        
+        // إغلاق لوحة الإدارة
+        function closeAdminPanel() {
+            adminPanel.classList.remove('visible');
+            IS_ADMIN_LOGGED_IN = false;
+        }
+        
+        // تحميل الألعاب من Firebase للصفحة الرئيسية
+        function loadGamesFromFirebase() {
+            gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
+                const gameGrid = document.getElementById('gameGrid');
+                gameGrid.innerHTML = '';
+                const gamesData = snapshot.val();
+                allGamesData = {};
+                
+                const gamesArray = [];
+                
+                if (gamesData) {
+                    for (let key in gamesData) {
+                        allGamesData[key] = gamesData[key];
+                        gamesArray.push({ id: key, ...gamesData[key] });
+                    }
+                    gamesArray.sort((a, b) => b.timestamp - a.timestamp);
+                }
+                
+                if (gamesArray.length === 0) {
+                    const noGamesMessage = document.createElement('div');
+                    noGamesMessage.className = 'no-results';
+                    noGamesMessage.innerHTML = `<i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>لا توجد ألعاب</h3><p>لم يتم إضافة أي ألعاب بعد!</p>`;
+                    gameGrid.appendChild(noGamesMessage);
+                } else {
+                    gamesArray.forEach(game => {
+                        addGameToPage(game);
+                    });
+                }
+                
+                filterGames();
+                updateGamesCount();
+            }, (errorObject) => {
+                console.error("The read failed: " + errorObject.code);
+                const gameGrid = document.getElementById('gameGrid');
+                gameGrid.innerHTML = `<div class="no-results"><i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i><h3>خطأ في التحميل</h3><p>حدث خطأ أثناء تحميل الألعاب: ${errorObject.message}.</p><p>يرجى التحقق من اتصال Firebase والمحاولة مرة أخرى.</p></div>`;
+            });
+        }
+        
+        // إضافة لعبة إلى الصفحة الرئيسية - تم التعديل هنا (إزالة target="_blank")
+        function addGameToPage(game) {
+            const gameGrid = document.getElementById('gameGrid');
+            const gameCard = document.createElement('div');
+            gameCard.className = 'game-card';
+            gameCard.setAttribute('data-category', game.category);
+            gameCard.setAttribute('data-game-id', game.id);
+            gameCard.style.opacity = '1';
+            
+            const gameLinksHtml = `
+                <a href="${game.link}" class="play-btn">
+                    <i class="fas fa-play"></i> تشغيل اللعبة
+                </a>
+            `;
+            
+            gameCard.innerHTML = `
+                <div class="game-image">
+                    <img src="${game.image}" alt="${game.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/260x260?text=Image+Not+Found';">
+                    ${game.badge ? `<span class="game-badge">${game.badge}</span>` : ''}
+                </div>
+                <div class="game-content">
+                    <h2>${game.name}</h2>
+                    <p>${game.description}</p>
+                    <div class="game-links">
+                        ${gameLinksHtml}
+                        ${IS_ADMIN_LOGGED_IN ? `
+                            <button class="edit-btn" onclick="showEditGameForm('${game.id}')">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="delete-btn" onclick="deleteGame('${game.id}', '${game.name}')">
+                                <i class="fas fa-trash-alt"></i> حذف
+                            </button>
+                        ` : ''}
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat"><i class="fas fa-star"></i> ${game.rating || 'N/A'}</div>
+                        <div class="stat"><i class="fas fa-user-friends"></i> ${game.players || 'N/A'}</div>
+                        <div class="stat"><i class="fas fa-clock"></i> ${game.time || 'N/A'}</div>
+                    </div>
+                </div>
+            `;
+            
+            gameGrid.appendChild(gameCard);
+        }
+        
+        // تحميل قائمة الألعاب للإدارة
+        function loadAdminGamesList() {
+            gamesRef.orderByChild('timestamp').on('value', (snapshot) => {
+                adminGamesList.innerHTML = '';
+                const gamesData = snapshot.val();
+                
+                if (!gamesData || Object.keys(gamesData).length === 0) {
+                    adminGamesList.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">لا توجد ألعاب مضافة حتى الآن</p>';
+                    return;
+                }
+                
+                const gamesArray = [];
+                for (let key in gamesData) {
+                    gamesArray.push({ id: key, ...gamesData[key] });
+                }
+                
+                gamesArray.sort((a, b) => b.timestamp - a.timestamp);
+                
+                gamesArray.forEach(game => {
+                    const gameItem = document.createElement('div');
+                    gameItem.className = 'game-item';
+                    gameItem.innerHTML = `
+                        <div class="game-item-info">
+                            <h3>${game.name}</h3>
+                            <p>${game.category} | ${game.description.substring(0, 50)}...</p>
+                        </div>
+                        <div class="game-item-actions">
+                            <button class="game-edit-btn" onclick="showEditGameForm('${game.id}')"><i class="fas fa-edit"></i> تعديل</button>
+                            <button class="game-delete-btn" onclick="deleteGame('${game.id}', '${game.name}')"><i class="fas fa-trash-alt"></i> حذف</button>
+                        </div>
+                    `;
+                    adminGamesList.appendChild(gameItem);
+                });
+            });
+        }
+        
+        // إضافة لعبة جديدة
+        addGameForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const gameData = {
+                name: document.getElementById('gameName').value,
+                category: document.getElementById('gameCategory').value,
+                description: document.getElementById('gameDescription').value,
+                image: document.getElementById('gameImage').value,
+                link: document.getElementById('gameLink').value,
+                badge: document.getElementById('gameBadge').value,
+                rating: document.getElementById('gameRating').value,
+                players: document.getElementById('gamePlayers').value,
+                time: document.getElementById('gameTime').value,
+                timestamp: Date.now()
+            };
+            
+            gamesRef.push(gameData)
+                .then(() => {
+                    alert('تمت إضافة اللعبة بنجاح!');
+                    addGameForm.reset();
+                    loadAdminGamesList();
+                })
+                .catch(error => {
+                    console.error('Error adding game:', error);
+                    alert('حدث خطأ أثناء إضافة اللعبة: ' + error.message);
+                });
+        });
+        
+        // عرض نموذج تعديل اللعبة
+        function showEditGameForm(gameId) {
+            const game = allGamesData[gameId];
+            if (!game) return;
+            
+            // في الواقع، يجب إنشاء نموذج تعديل منفصل أو استخدام modal
+            // لكن لأغراض العرض، سنقوم بملئ النموذج الحالي
+            document.getElementById('gameName').value = game.name;
+            document.getElementById('gameCategory').value = game.category;
+            document.getElementById('gameDescription').value = game.description;
+            document.getElementById('gameImage').value = game.image;
+            document.getElementById('gameLink').value = game.link;
+            document.getElementById('gameBadge').value = game.badge || '';
+            document.getElementById('gameRating').value = game.rating || '';
+            document.getElementById('gamePlayers').value = game.players || '';
+            document.getElementById('gameTime').value = game.time || '';
+            
+            // تغيير نص زر الإضافة إلى "تحديث"
+            const submitBtn = addGameForm.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-sync"></i> تحديث اللعبة';
+            
+            // تغيير سلوك النموذج للتحديث بدلاً من الإضافة
+            addGameForm.onsubmit = function(e) {
+                e.preventDefault();
+                
+                const updatedData = {
+                    name: document.getElementById('gameName').value,
+                    category: document.getElementById('gameCategory').value,
+                    description: document.getElementById('gameDescription').value,
+                    image: document.getElementById('gameImage').value,
+                    link: document.getElementById('gameLink').value,
+                    badge: document.getElementById('gameBadge').value,
+                    rating: document.getElementById('gameRating').value,
+                    players: document.getElementById('gamePlayers').value,
+                    time: document.getElementById('gameTime').value,
+                    timestamp: game.timestamp // الحفاظ على الطابع الزمني الأصلي
+                };
+                
+                gamesRef.child(gameId).update(updatedData)
+                    .then(() => {
+                        alert('تم تحديث اللعبة بنجاح!');
+                        addGameForm.reset();
+                        submitBtn.innerHTML = '<i class="fas fa-plus"></i> إضافة اللعبة';
+                        addGameForm.onsubmit = null; // إعادة تعيين معالج الأحداث
+                        loadAdminGamesList();
+                    })
+                    .catch(error => {
+                        console.error('Error updating game:', error);
+                        alert('حدث خطأ أثناء تحديث اللعبة: ' + error.message);
+                    });
+            };
+            
+            // التمرير إلى أعلى النموذج
+            addGameForm.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // حذف لعبة
+        function deleteGame(gameId, gameName) {
+            if (confirm(`هل أنت متأكد من أنك تريد حذف اللعبة "${gameName}"؟`)) {
+                gamesRef.child(gameId).remove()
+                    .then(() => {
+                        alert('تم حذف اللعبة بنجاح!');
+                        loadAdminGamesList();
+                    })
+                    .catch(error => {
+                        console.error('Error deleting game:', error);
+                        alert('حدث خطأ أثناء حذف اللعبة: ' + error.message);
+                    });
+            }
+        }
+        
+        // تحديث كلمة مرور الموقع
+        function updateSitePassword() {
+            const currentPassword = document.getElementById('currentSitePassword').value;
+            const newPassword = document.getElementById('newSitePassword').value;
+            const confirmPassword = document.getElementById('confirmSitePassword').value;
+            
+            if (currentPassword !== SITE_PASSWORD_FIREBASE) {
+                alert('كلمة المرور الحالية غير صحيحة!');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                alert('كلمة المرور الجديدة غير متطابقة!');
+                return;
+            }
+            
+            passwordsRef.update({ sitePassword: newPassword })
+                .then(() => {
+                    SITE_PASSWORD_FIREBASE = newPassword;
+                    alert('تم تحديث كلمة مرور الموقع بنجاح!');
+                    document.getElementById('currentSitePassword').value = '';
+                    document.getElementById('newSitePassword').value = '';
+                    document.getElementById('confirmSitePassword').value = '';
+                })
+                .catch(error => {
+                    console.error('Error updating site password:', error);
+                    alert('حدث خطأ أثناء تحديث كلمة المرور: ' + error.message);
+                });
+        }
+        
+        // تحديث كلمة مرور الإدارة
+        function updateAdminPassword() {
+            const currentPassword = document.getElementById('currentAdminPassword').value;
+            const newPassword = document.getElementById('newAdminPassword').value;
+            const confirmPassword = document.getElementById('confirmAdminPassword').value;
+            
+            if (currentPassword !== ADMIN_PASSWORD_FIREBASE) {
+                alert('كلمة المرور الحالية غير صحيحة!');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                alert('كلمة المرور الجديدة غير متطابقة!');
+                return;
+            }
+            
+            passwordsRef.update({ adminPassword: newPassword })
+                .then(() => {
+                    ADMIN_PASSWORD_FIREBASE = newPassword;
+                    alert('تم تحديث كلمة مرور الإدارة بنجاح!');
+                    document.getElementById('currentAdminPassword').value = '';
+                    document.getElementById('newAdminPassword').value = '';
+                    document.getElementById('confirmAdminPassword').value = '';
+                })
+                .catch(error => {
+                    console.error('Error updating admin password:', error);
+                    alert('حدث خطأ أثناء تحديث كلمة المرور: ' + error.message);
+                });
+        }
+        
+        // تصفية الألعاب
+        function filterGames() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".game-card");
+            const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+            
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const title = card.querySelector("h2").textContent.toLowerCase();
+                const description = card.querySelector("p").textContent.toLowerCase();
+                const category = card.getAttribute("data-category");
+                
+                const matchesSearch = title.includes(query) || description.includes(query);
+                const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+                
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            
+            const existingNoResults = document.getElementById("noResults");
+            if (existingNoResults) existingNoResults.remove();
+            
+            if (visibleCount === 0) {
+                const gameGrid = document.getElementById("gameGrid");
+                const noResults = document.createElement("div");
+                noResults.className = "no-results";
+                noResults.id = "noResults";
+                noResults.innerHTML = `
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>لا توجد نتائج</h3>
+                    <p>لم يتم العثور على ألعاب تطابق بحثك. حاول تغيير الكلمات.</p>
+                `;
+                gameGrid.appendChild(noResults);
+            }
+        }
+        
+        // إضافة معالجات الأحداث لأزرار التصفية
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                filterGames();
+            });
+        });
+        
+        // إضافة معالجات الأحداث لتصنيفات القائمة الجانبية
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-category') === category) {
+                        btn.classList.add('active');
+                    } else if (category === 'all' && btn.getAttribute('data-category') === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                filterGames();
+            });
+        });
+        
+        // تحديث عدد الألعاب
+        function updateGamesCount() {
+            gamesRef.once('value').then(snapshot => {
+                const count = snapshot.numChildren();
+                document.getElementById('gamesCount').textContent = count;
+            });
+        }
+        
+        // تهيئة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            if (sitePasswordInput) {
+                sitePasswordInput.focus();
+                togglePasswordSubmitButton(); // التأكد من حالة الزر عند تحميل الصفحة
+            }
+            
+            // إضافة أنيميشن الهزّ
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+                .shake {
+                    animation: shake 0.5s;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
